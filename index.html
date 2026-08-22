@@ -1,47 +1,166 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Server Hub - Blox Fruits</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLOX FRUITS - Server Hub</title>
 <style>
-body{background:#0d0d0d;color:#e0e0e0;font-family:Arial,sans-serif;margin:0}
-.header{background:#ff6a00;padding:25px 20px;text-align:center}
-.header h1{color:#000;margin:0;font-size:32px;font-weight:800}
-.nav{background:#1a1a1a;padding:12px;text-align:center;border-bottom:2px solid #ff6a00}
-.nav a{color:#ff6a00;text-decoration:none;margin:0 15px;font-weight:700}
-.nav a:hover{color:#fff}
-.container{max-width:800px;margin:25px auto;padding:0 15px}
-h2{color:#ff6a00;font-size:22px;border-bottom:2px solid #333;padding-bottom:8px;margin:25px 0 15px 0}
-.box{background:#1a1a1a;border:1px solid #2a2a2a;margin:10px 0;padding:15px 18px;border-radius:8px;display:flex;justify-content:space-between;align-items:center}
-.box:hover{background:#222;border-color:#ff6a00}
-.players{color:#00d26a;font-size:14px}
-.btn{background:#ff6a00;color:#000;border:none;padding:10px 22px;border-radius:6px;font-weight:800;cursor:pointer}
-.btn:hover{background:#ff8533}
-.footer{background:#111;margin-top:50px;padding:30px 20px;text-align:center;border-top:2px solid #ff6a00}
-.footer a{color:#ff6a00;text-decoration:none;margin:0 10px;font-size:14px}
-.copy{color:#555;font-size:12px;margin-top:15px}
+*{box-sizing:border-box}
+body{
+background:#0a0a0a;
+color:#fff;
+font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+}
+
+/* UDAH BUANG CANVAS + FLOATING ICONS */
+
+.header{
+background:linear-gradient(90deg,#ff6a00,#ffaa00);
+padding:40px 20px;
+text-align:center;
+border-bottom:4px solid #ffaa00;
+}
+.header h1{
+color:#000;
+margin:0;
+font-size:42px;
+font-weight:800;
+letter-spacing:3px;
+}
+
+.stats{
+background:#111;
+padding:18px;
+text-align:center;
+border-bottom:2px solid #ff6a00;
+}
+.stats span{margin:0 25px;color:#ffaa00;font-size:16px;font-weight:700}
+.stats b{color:#00ff88;font-size:20px}
+
+.container{max-width:850px;margin:40px auto;padding:0 15px}
+h2{
+color:#ffaa00;
+font-size:28px;
+font-weight:800;
+margin:40px 0 20px 0;
+border-bottom:3px solid #ff6a00;
+padding-bottom:10px;
+}
+
+.server{
+background:#151515;
+border:2px solid #2a2a2a;
+margin:15px 0;
+padding:20px 25px;
+border-radius:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+transition:0.2s;
+border-left:6px solid #ff6a00;
+}
+.server:hover{
+background:#1f1f1f;
+border-color:#ffaa00;
+border-left:6px solid #ffaa00;
+transform:translateX(10px);
+}
+
+.server b{font-size:18px;color:#ffaa00;font-weight:800}
+.players{color:#00ff88;font-weight:700;font-size:15px}
+.info{color:#aaa;font-size:14px;margin-top:5px}
+
+.join-btn{
+background:linear-gradient(90deg,#ff6a00,#ffaa00);
+color:#000;
+border:none;
+padding:12px 28px;
+border-radius:10px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:0.2s;
+}
+.join-btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px rgba(255,170,0,0.5);
+}
+
+.footer{
+background:#0a0a0a;
+margin-top:80px;
+padding:40px 20px;
+text-align:center;
+border-top:4px solid #ff6a00;
+}
+.footer-title{
+color:#ffaa00;
+font-size:18px;
+margin-bottom:20px;
+font-weight:800;
+letter-spacing:2px;
+}
+.footer a{
+background:#151515;
+border:2px solid #ff6a00;
+color:#ffaa00;
+padding:14px 28px;
+border-radius:10px;
+text-decoration:none;
+margin:10px;
+display:inline-block;
+font-weight:700;
+transition:0.2s;
+}
+.footer a:hover{
+background:#ffaa00;
+color:#000;
+border-color:#ffaa00;
+}
+.copyright{margin-top:25px;color:#555;font-size:13px}
 </style>
 </head>
 <body>
+
 <div class="header"><h1>BLOX FRUITS SERVER HUB</h1></div>
-<div class="nav">
-<a href="index.html">Server Hub</a>
-<a href="trading.html">Trading</a>
-<a href="boss.html">Boss Hunt</a>
-<a href="pvp.html">PVP</a>
+<div class="stats">
+<span>Players Online: <b>2,341,567</b></span>
+<span>6 Servers</span>
+<span>Region: Global</span>
 </div>
+
 <div class="container">
-<h2>Public Servers</h2>
-<div class="box"><div><b>Server #1001</b><br><span class="players">12/12 FULL | ID | 20ms</span></div><button class="btn" onclick="join()">JOIN</button></div>
-<div class="box"><div><b>Server #1002</b><br><span class="players">8/12 | SG | 28ms</span></div><button class="btn" onclick="join()">JOIN</button></div>
-<div class="box"><div><b>Server #1003</b><br><span class="players">5/12 | US | 150ms</span></div><button class="btn" onclick="join()">JOIN</button></div>
-<h2>Private Servers</h2>
-<div class="box"><div><b>VIP Server #01</b><br><span class="players">2/6 | Farming</span></div><button class="btn" onclick="join()">JOIN</button></div>
-<div class="box"><div><b>VIP Server #02</b><br><span class="players">4/6 | Fruit Hunt</span></div><button class="btn" onclick="join()">JOIN</button></div>
+<h2>SERVER LIST</h2>
+
+<!-- SEA 1 -->
+<div class="server"><div><b>Sea 1 - Server #01</b><div class="info"><span class="players">3/12 Players</span> | Ping 22ms | 🇮🇩 Indonesia</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 1 - Server #08</b><div class="info"><span class="players">9/12 Players</span> | Ping 28ms | 🇸🇬 Singapore</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+
+<!-- SEA 2 -->
+<div class="server"><div><b>Sea 2 - Server #07</b><div class="info"><span class="players">4/12 Players</span> | Ping 45ms | 🇦🇺 Australia</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 2 - Server #11</b><div class="info"><span class="players">10/12 Players</span> | Ping 38ms | 🇺🇸 USA</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+
+<!-- SEA 3 -->
+<div class="server"><div><b>Sea 3 - Server #02</b><div class="info"><span class="players">2/12 Players</span> | Ping 24ms | 🇮🇩 Indonesia</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 3 - Server #20</b><div class="info"><span class="players">11/12 Players</span> | Ping 60ms | 🇺🇸 USA</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+
 </div>
+
 <div class="footer">
-<a href="index.html">Home</a> | <a href="trading.html">Trading</a> | <a href="boss.html">Boss</a> | <a href="pvp.html">PVP</a>
-<div class="copy">© 2026 Blox Fruits Server Hub</div>
+<div class="footer-title">NAVIGATION</div>
+<a href="trading.html">TRADING</a>
+<a href="boss.html">BOSS HUNT</a>
+<a href="pvp.html">PVP ARENA</a>
+<div class="copyright">Copyright 2026 BLOX FRUITS SERVER HUB</div>
 </div>
-<script>function join(){window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits";}</script>
-</body></html>
+
+<script>
+function join(){
+window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
+}
+// UDAH HAPUS PARTICLE + ANIMASI BERAT
+</script>
+</body>
+</html>
