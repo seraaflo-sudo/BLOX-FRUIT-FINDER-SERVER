@@ -1,67 +1,32 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLOX FRUITS - PvP</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PVP ARENA - BLOX FRUITS</title>
 <style>
-body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Arial;margin:0;padding:0}
-.header{background:linear-gradient(90deg,#ff8c00,#ffa500);padding:20px;text-align:center}
-.header h1{color:#000;margin:0;font-size:32px;font-weight:900}
-.container{max-width:700px;margin:20px auto;padding:0 15px}
-h2{color:#ffa500;text-align:center}
-.server{background:#1a1a1a;border:1px solid #333;margin:12px 0;padding:15px;border-radius:10px;display:flex;justify-content:space-between;align-items:center}
-.server:hover{border-color:#ffa500}
-.tag{background:#333;color:#ffa500;padding:3px 8px;border-radius:4px;font-size:12px;margin-right:5px}
-.players{color:#4caf50;font-weight:bold}
-.join-btn{background:#ffa500;color:#000;border:0;padding:10px 20px;border-radius:8px;font-weight:bold;cursor:pointer}
-.join-btn:hover{background:#ffc04d}
-.back{background:#111;padding:20px;text-align:center}
-.back a{color:#ffa500;text-decoration:none;border:1px solid #ffa500;padding:10px 20px;border-radius:8px}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap');
+body{background:#060606;color:#fff;font-family:'Segoe UI',Arial;margin:0}
+.header{background:linear-gradient(90deg,#ff4e00,#ffaa00);padding:25px;text-align:center;border-bottom:5px solid #ff8c00}
+.header h1{color:#000;font-family:'Orbitron',sans-serif;font-size:36px;margin:0;text-shadow:0 0 15px #fff}
+.container{max-width:900px;margin:30px auto;padding:0 15px}
+h2{color:#ffaa00;font-family:'Orbitron',sans-serif;border-bottom:3px solid #ff8c00;padding-bottom:10px}
+.player{background:#1a1a1a;border-left:5px solid #ffaa00;margin:12px 0;padding:15px;border-radius:10px;display:flex;justify-content:space-between}
+.player:hover{background:#222;border-color:#ff4e00}
+.rank{color:#ffaa00;font-weight:900;font-size:20px;width:40px}
+.kills{color:#ff4e00;font-weight:bold}
+.back{background:#ff8c00;color:#000;padding:12px 25px;border-radius:10px;text-decoration:none;font-weight:900;font-family:'Orbitron',sans-serif;display:inline-block;margin-bottom:20px}
+.back:hover{background:#ffaa00}
 </style>
 </head>
 <body>
-
 <div class="header"><h1>PVP ARENA</h1></div>
-
 <div class="container">
-<h2>SERVER RAME BUAT PVP</h2>
-
-<div class="server">
-<div>
-<b>Sea 2 - PvP #11</b><br>
-<span class="players">10/12 Players</span> | Ping 38ms | Country: USA<br>
-<span class="tag">PvP</span><span class="tag">High Action</span>
+<a href="index.html" class="back">BACK TO HUB</a>
+<h2>TOP KILLERS</h2>
+<div class="player"><div><span class="rank">1</span><b>ProSniper_X</b></div><span class="kills">1,247 Kills</span></div>
+<div class="player"><div><span class="rank">2</span><b>DragonSlayer</b></div><span class="kills">1,102 Kills</span></div>
+<div class="player"><div><span class="rank">3</span><b>KitsuneKing</b></div><span class="kills">998 Kills</span></div>
+<div class="player"><div><span class="rank">4</span><b>DarkBlade99</b></div><span class="kills">876 Kills</span></div>
+<div class="player"><div><span class="rank">5</span><b>MagmaRaid</b></div><span class="kills">743 Kills</span></div>
 </div>
-<button class="join-btn" onclick="join()">JOIN</button>
-</div>
-
-<div class="server">
-<div>
-<b>Sea 2 - Arena #05</b><br>
-<span class="players">8/12 Players</span> | Ping 41ms | Country: UK<br>
-<span class="tag">Arena</span><span class="tag">1v1</span>
-</div>
-<button class="join-btn" onclick="join()">JOIN</button>
-</div>
-
-<div class="server">
-<div>
-<b>Sea 3 - War #20</b><br>
-<span class="players">12/12 Players</span> | Ping 55ms | Country: Australia<br>
-<span class="tag">War</span><span class="tag">Full Server</span>
-</div>
-<button class="join-btn" onclick="join()">JOIN</button>
-</div>
-
-</div>
-
-<div class="back"><a href="index.html">Back to Server</a></div>
-
-<script>
-function join(){
-window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
-}
-</script>
-</body>
-</html>
+</body></html>
