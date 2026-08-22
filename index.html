@@ -15,4 +15,75 @@ body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Arial;margin:0;padding
 h2{color:#ffa500;text-align:center}
 .server{background:#1a1a1a;border:1px solid #333;margin:12px 0;padding:15px;border-radius:10px;display:flex;justify-content:space-between;align-items:center}
 .server:hover{border-color:#ffa500}
-.tag{background:#333;color:#ffa500;padding:3px 8px
+.tag{background:#333;color:#ffa500;padding:3px 8px;border-radius:4px;font-size:12px;margin-right:5px}
+.players{color:#4caf50;font-weight:bold}
+.join-btn{background:#ffa500;color:#000;border:0;padding:10px 20px;border-radius:8px;font-weight:bold;cursor:pointer}
+.join-btn:hover{background:#ffc04d}
+.footer{background:#111;margin-top:40px;padding:20px;text-align:center;border-top:2px solid #ffa500}
+.footer a{background:#222;border:1px solid #444;color:#fff;padding:12px 25px;border-radius:8px;text-decoration:none;margin:5px;display:inline-block;font-weight:bold}
+.footer a:hover{background:#ffa500;color:#000}
+</style>
+</head>
+<body>
+
+<div class="header"><h1>⚔️ BLOX FRUITS ⚔️</h1></div>
+<div class="stats">
+<span>🌐 <b>Players Online: 1,247,892</b></span>
+<span>🖥️ 4 Servers</span>
+<span>📍 Asia</span>
+</div>
+
+<div class="container">
+<h2>SERVER LIST</h2>
+
+<div class="server">
+<div>
+<b>Sea 3 - Server #02</b><br>
+<span class="players">2/12 Players</span> | Ping 24ms<br>
+<span class="tag">Boss Spawn</span><span class="tag">Low Player</span>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<div class="server">
+<div>
+<b>Sea 2 - Server #11</b><br>
+<span class="players">10/12 Players</span> | Ping 38ms<br>
+<span class="tag">PvP</span><span class="tag">High Action</span>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<div class="server">
+<div>
+<b>Sea 1 - Server #04</b><br>
+<span class="players">6/12 Players</span> | Ping 31ms<br>
+<span class="tag">Trading</span><span class="tag">Safe Zone</span>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<div class="server">
+<div>
+<b>Sea 3 - Server #09</b><br>
+<span class="players">1/12 Players</span> | Ping 52ms<br>
+<span class="tag">Boss Spawn</span><span class="tag">Kitsune</span>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+</div>
+
+<div class="footer">
+<a href="trading.html">Trading</a>
+<a href="boss.html">Boss</a>
+<a href="pvp.html">PvP</a>
+</div>
+
+<script>
+function join(){
+window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
+}
+</script>
+</body>
+</html>
