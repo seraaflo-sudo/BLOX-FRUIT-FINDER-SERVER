@@ -2,23 +2,22 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BF Server Hub</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body { 
-      background: linear-gradient(135deg, #050505 0%, #1a0f00 100%);
+      background: #0a0a0a;
       color:white; 
       font-family:'Segoe UI', Arial; 
       padding:30px 15px; 
-      min-height:100vh;
     }
     .container { max-width:800px; margin:0 auto; }
     h1 { 
       color:#ffa500; 
-      font-size:38px; 
+      font-size:36px; 
       text-align:center; 
-      margin-bottom:8px;
-      text-shadow: 0 0 15px #ffaa00;
+      margin-bottom:10px;
     }
     .subtitle { text-align:center; color:#aaa; margin-bottom:25px; }
 
@@ -35,6 +34,44 @@
       color:#ccc;
       padding:8px 16px;
       border-radius:20px;
-      cursor:pointer;
       font-weight:bold;
-      transition:0.2s;
+    }
+    .tab.active {
+      background:#ffa500;
+      color:#000;
+      border-color:#ffa500;
+    }
+    
+    .server-card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius:12px;
+      padding:16px 20px;
+      margin-bottom:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .server-card:hover {
+      border-color:#ffa500;
+      background: #222;
+    }
+    .server-info { text-align:left; }
+    .server-name { font-weight:bold; font-size:16px; }
+    .server-detail { font-size:13px; color:#999; margin-top:4px; }
+    .tag { 
+      display:inline-block;
+      background:#2a2a2a;
+      color:#ffa500;
+      font-size:11px;
+      padding:3px 8px;
+      border-radius:5px;
+      margin-right:5px;
+      margin-top:5px;
+    }
+    .players { color:#4caf50; font-weight:bold; }
+    
+    .join-btn { 
+      background:#ffa500; 
+      color:#000; 
+      padding:10px 22px; 
