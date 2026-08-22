@@ -1,73 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>BF Server Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOX FRUITS - Server Hub</title>
   <style>
-    body { background:#111; color:#fff; font-family:Arial; padding:20px; }
-    h1 { color:#ffa500; text-align:center; }
-    .server { background:#222; margin:10px 0; padding:15px; border-radius:8px; display:flex; justify-content:space-between; }
-    button { background:#ffa500; border:none; padding:10px 20px; border-radius:5px; font-weight:bold; cursor:pointer; }
-    button:hover { background:#ffc04d; }
-    .tag { background:#444; padding:3px 8px; border-radius:4px; font-size:12px; margin-right:5px; }
-  </style>
-</head>
-<body>
-  <h1>⚔️ BF SERVER HUB ⚔️</h1>
-  <p style="text-align:center; color:#aaa;">Pilih server untuk PvP, Trading, Boss Spawn</p>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { 
+      background: #0c0c0c;
+      color:white; 
+      font-family:'Segoe UI', Arial; 
+    }
+    /* HEADER */
+    .header {
+      background: linear-gradient(90deg, #ff8c00, #ffa500);
+      padding: 15px 20px;
+      text-align:center;
+      box-shadow: 0 4px 15px rgba(255,165,0,0.4);
+    }
+    .header h1 { color:#000; font-size:28px; font-weight:900; }
+    .stats {
+      background:#1a1a1a;
+      padding:10px;
+      text-align:center;
+      border-bottom:2px solid #ffa500;
+    }
+    .stats span { margin: 0 15px; color:#ccc; font-size:14px; }
+    .stats b { color:#4caf50; }
 
-  <div class="server">
-    <div>
-      <b>Sea 3 - Server #02</b> <br>
-      <span class="tag">Boss Spawn</span> <span class="tag">2/12 Players</span>
-    </div>
-    <button onclick="join()">JOIN</button>
-  </div>
+    .container { max-width:900px; margin:20px auto; padding:0 15px; }
+    h2 { color:#ffa500; margin-bottom:15px; text-align:center; }
 
-  <div class="server">
-    <div>
-      <b>Sea 2 - Server #11</b> <br>
-      <span class="tag">PvP</span> <span class="tag">10/12 Players</span>
-    </div>
-    <button onclick="join()">JOIN</button>
-  </div>
-
-  <div class="server">
-    <div>
-      <b>Sea 1 - Server #04</b> <br>
-      <span class="tag">Trading</span> <span class="tag">6/12 Players</span>
-    </div>
-    <button onclick="join()">JOIN</button>
-  </div>
-
-  <div class="server">
-    <div>
-      <b>Sea 3 - Server #09</b> <br>
-      <span class="tag">Boss Spawn</span> <span class="tag">Kitsune</span>
-    </div>
-    <button onclick="join()">JOIN</button>
-  </div>
-
-  <div class="server">
-    <div>
-      <b>Sea 2 - Server #05</b> <br>
-      <span class="tag">PvP</span> <span class="tag">Arena</span>
-    </div>
-    <button onclick="join()">JOIN</button>
-  </div>
-
-  <div class="server">
-    <div>
-      <b>Sea 1 - Server #13</b> <br>
-      <span class="tag">Trading</span> <span class="tag">Market</span>
-    </div>
-    <button onclick="join()">JOIN</button>
-  </div>
-
-<script>
-function join() {
-  window.location.href = "https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
-}
-</script>
-</body>
-</html>
+    .server-card {
+      background: #1a
