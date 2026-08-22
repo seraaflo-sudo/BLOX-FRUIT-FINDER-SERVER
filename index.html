@@ -5,102 +5,114 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLOX FRUITS - Server Hub</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap');
+
 body{
-background:#080808;
+background:#060606;
 color:#fff;
-font-family:'Segoe UI',Arial, sans-serif;
+font-family:'Segoe UI',Arial,sans-serif;
 margin:0;
 padding:0;
 }
 
 .header{
-background:linear-gradient(90deg,#ff6a00,#ffaa00,#ff6a00);
-background-size:200% 200%;
-padding:30px 20px;
+background:linear-gradient(90deg,#ff4e00,#ff8c00,#ffaa00,#ff8c00,#ff4e00);
+background-size:300% 300%;
+padding:35px 20px;
 text-align:center;
-border-bottom:5px solid #000;
-animation:gradient 3s ease infinite;
+border-bottom:5px solid #ffaa00;
+animation:fire 4s ease infinite;
 }
-@keyframes gradient{
+@keyframes fire{
 0%{background-position:0% 50%}
 50%{background-position:100% 50%}
 100%{background-position:0% 50%}
 }
 .header h1{
-color:#000;
+color:#fff;
 margin:0;
-font-size:36px;
-font-weight:900;
-letter-spacing:2px;
+font-size:40px;
+font-weight:800;
+font-family:'Orbitron',sans-serif;
+letter-spacing:3px;
+text-shadow:0 0 15px #ff8c00, 0 0 30px #ff4e00;
 }
 
 .stats{
-background:#111;
-padding:16px;
+background:#0f0f0f;
+padding:18px;
 text-align:center;
 border-bottom:3px solid #ff8c00;
 }
-.stats span{margin:0 25px;color:#eee;font-size:16px;font-weight:bold}
+.stats span{margin:0 25px;color:#ffaa00;font-size:16px;font-weight:600}
 .stats b{color:#00ff88;font-size:18px}
 
-.container{max-width:750px;margin:30px auto;padding:0 15px}
+.container{max-width:850px;margin:30px auto;padding:0 15px}
 h2{
 color:#ffaa00;
 text-align:center;
-font-size:24px;
-font-weight:900;
+font-size:28px;
+font-weight:800;
+font-family:'Orbitron',sans-serif;
 margin:30px 0 20px 0;
-letter-spacing:1px;
+letter-spacing:2px;
 border-bottom:3px solid #ff8c00;
 padding-bottom:10px;
+text-shadow:0 0 10px #ff8c00;
 }
 
 .server{
-background:linear-gradient(135deg,#1a1a1a 0%,#222 100%);
-border:2px solid #333;
+background:linear-gradient(135deg,#141414 0%,#1e1e1e 100%);
+border:2px solid #2a2a2a;
 margin:18px 0;
-padding:20px;
+padding:20px 25px;
 border-radius:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 transition:0.3s;
-border-left:5px solid #ff8c00;
+border-left:6px solid #ff8c00;
 }
 .server:hover{
 border-color:#ffaa00;
-background:#262626;
-border-left:5px solid #ffaa00;
+background:#242424;
+border-left:6px solid #ffaa00;
+transform:translateX(10px);
+box-shadow:0 0 20px rgba(255,140,0,0.3);
 }
 
-.server b{font-size:18px;color:#ffaa00}
+.server b{font-size:19px;color:#ffaa00;font-family:'Orbitron',sans-serif}
 .players{color:#00ff88;font-weight:bold;font-size:16px}
+.info{color:#aaa;font-size:14px;margin-top:4px}
 
 .join-btn{
-background:linear-gradient(90deg,#ff6a00,#ffaa00);
+background:linear-gradient(90deg,#ff4e00,#ff8c00,#ffaa00);
 color:#000;
 border:0;
-padding:14px 28px;
+padding:14px 30px;
 border-radius:12px;
 font-weight:900;
 cursor:pointer;
 font-size:16px;
-letter-spacing:0.5px;
+font-family:'Orbitron',sans-serif;
+letter-spacing:1px;
+transition:0.2s;
 }
 .join-btn:hover{
-background:linear-gradient(90deg,#ffaa00,#ff6a00);
-transform:scale(1.05);
+background:linear-gradient(90deg,#ffaa00,#ff8c00,#ff4e00);
+transform:scale(1.08);
+box-shadow:0 0 15px #ff8c00;
 }
 
 .footer{
-background:#0a0a0a;
+background:#080808;
 margin-top:60px;
 padding:30px;
 text-align:center;
 border-top:5px solid #ff8c00;
 }
 .footer a{
-background:#1a1a1a;
+background:#121212;
 border:2px solid #333;
 color:#ffaa00;
 padding:15px 30px;
@@ -108,13 +120,17 @@ border-radius:12px;
 text-decoration:none;
 margin:8px;
 display:inline-block;
-font-weight:bold;
-font-size:16px;
+font-weight:800;
+font-family:'Orbitron',sans-serif;
+font-size:15px;
+letter-spacing:1px;
+transition:0.3s;
 }
 .footer a:hover{
-background:linear-gradient(90deg,#ff6a00,#ffaa00);
+background:linear-gradient(90deg,#ff4e00,#ffaa00);
 color:#000;
 border-color:#ffaa00;
+transform:translateY(-3px);
 }
 </style>
 </head>
@@ -123,7 +139,7 @@ border-color:#ffaa00;
 <div class="header"><h1>BLOX FRUITS SERVER HUB</h1></div>
 <div class="stats">
 <span>Players Online: <b>1,247,892</b></span>
-<span>4 Servers</span>
+<span>8 Servers</span>
 <span>Region: Global</span>
 </div>
 
@@ -132,32 +148,64 @@ border-color:#ffaa00;
 
 <div class="server">
 <div>
-<b>Sea 3 - Server #02</b><br>
-<span class="players">2/12 Players</span> | Ping 24ms | Country: Indonesia
+<b>Sea 3 - Server #02</b>
+<div class="info"><span class="players">2/12 Players</span> | Ping 24ms | Country: Indonesia</div>
 </div>
 <button class="join-btn" onclick="join()">JOIN</button>
 </div>
 
 <div class="server">
 <div>
-<b>Sea 2 - Server #11</b><br>
-<span class="players">10/12 Players</span> | Ping 38ms | Country: USA
+<b>Sea 2 - Server #11</b>
+<div class="info"><span class="players">10/12 Players</span> | Ping 38ms | Country: USA</div>
 </div>
 <button class="join-btn" onclick="join()">JOIN</button>
 </div>
 
 <div class="server">
 <div>
-<b>Sea 1 - Server #04</b><br>
-<span class="players">6/12 Players</span> | Ping 31ms | Country: Japan
+<b>Sea 1 - Server #04</b>
+<div class="info"><span class="players">6/12 Players</span> | Ping 31ms | Country: Japan</div>
 </div>
 <button class="join-btn" onclick="join()">JOIN</button>
 </div>
 
 <div class="server">
 <div>
-<b>Sea 3 - Server #09</b><br>
-<span class="players">1/12 Players</span> | Ping 52ms | Country: Brazil
+<b>Sea 3 - Server #09</b>
+<div class="info"><span class="players">1/12 Players</span> | Ping 52ms | Country: Brazil</div>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<div class="server">
+<div>
+<b>Sea 1 - Server #15</b>
+<div class="info"><span class="players">8/12 Players</span> | Ping 29ms | Country: Singapore</div>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<div class="server">
+<div>
+<b>Sea 2 - Server #07</b>
+<div class="info"><span class="players">4/12 Players</span> | Ping 45ms | Country: Australia</div>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<div class="server">
+<div>
+<b>Sea 3 - Server #20</b>
+<div class="info"><span class="players">11/12 Players</span> | Ping 60ms | Country: USA</div>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<div class="server">
+<div>
+<b>Sea 1 - Server #01</b>
+<div class="info"><span class="players">3/12 Players</span> | Ping 22ms | Country: Indonesia</div>
 </div>
 <button class="join-btn" onclick="join()">JOIN</button>
 </div>
