@@ -1,67 +1,31 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLOX FRUITS - Boss</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOSS HUNT - BLOX FRUITS</title>
 <style>
-body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Arial;margin:0;padding:0}
-.header{background:linear-gradient(90deg,#ff8c00,#ffa500);padding:20px;text-align:center}
-.header h1{color:#000;margin:0;font-size:32px;font-weight:900}
-.container{max-width:700px;margin:20px auto;padding:0 15px}
-h2{color:#ffa500;text-align:center}
-.server{background:#1a1a1a;border:1px solid #333;margin:12px 0;padding:15px;border-radius:10px;display:flex;justify-content:space-between;align-items:center}
-.server:hover{border-color:#ffa500}
-.tag{background:#333;color:#ffa500;padding:3px 8px;border-radius:4px;font-size:12px;margin-right:5px}
-.players{color:#4caf50;font-weight:bold}
-.join-btn{background:#ffa500;color:#000;border:0;padding:10px 20px;border-radius:8px;font-weight:bold;cursor:pointer}
-.join-btn:hover{background:#ffc04d}
-.back{background:#111;padding:20px;text-align:center}
-.back a{color:#ffa500;text-decoration:none;border:1px solid #ffa500;padding:10px 20px;border-radius:8px}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap');
+body{background:#060606;color:#fff;font-family:'Segoe UI',Arial;margin:0}
+.header{background:linear-gradient(90deg,#ff4e00,#ffaa00);padding:25px;text-align:center;border-bottom:5px solid #ff8c00}
+.header h1{color:#000;font-family:'Orbitron',sans-serif;font-size:36px;margin:0;text-shadow:0 0 15px #fff}
+.container{max-width:900px;margin:30px auto;padding:0 15px}
+h2{color:#ffaa00;font-family:'Orbitron',sans-serif;border-bottom:3px solid #ff8c00;padding-bottom:10px}
+.boss{background:#1a1a1a;border-left:5px solid #ff0000;margin:15px 0;padding:18px;border-radius:10px}
+.boss:hover{background:#222;border-color:#ff4e00}
+.timer{color:#ff4e00;font-weight:bold;font-size:18px}
+.location{color:#aaa;font-size:14px}
+.back{background:#ff8c00;color:#000;padding:12px 25px;border-radius:10px;text-decoration:none;font-weight:900;font-family:'Orbitron',sans-serif;display:inline-block;margin-bottom:20px}
+.back:hover{background:#ffaa00}
 </style>
 </head>
 <body>
-
-<div class="header"><h1>BOSS RAID</h1></div>
-
+<div class="header"><h1>BOSS HUNT</h1></div>
 <div class="container">
-<h2>SERVER SEPI BUAT RAID</h2>
-
-<div class="server">
-<div>
-<b>Sea 3 - Boss Hunt #09</b><br>
-<span class="players">1/12 Players</span> | Ping 52ms | Country: Brazil<br>
-<span class="tag">Kitsune</span><span class="tag">Low Player</span>
+<a href="index.html" class="back">BACK TO HUB</a>
+<h2>UPCOMING BOSSES</h2>
+<div class="boss"><b>👹 Kitsune</b><div class="timer">Spawn: 14:30 WIB</div><div class="location">Location: Sea 3 - Mystic Island</div></div>
+<div class="boss"><b>👹 Dough King</b><div class="timer">Spawn: 15:00 WIB</div><div class="location">Location: Sea 3 - Cake Land</div></div>
+<div class="boss"><b>👹 Rip_indra</b><div class="timer">Spawn: 15:30 WIB</div><div class="location">Location: Sea 3 - Forgotten Island</div></div>
+<div class="boss"><b>👹 Darkbeard</b><div class="timer">Spawn: 16:00 WIB</div><div class="location">Location: Sea 2 - Dark Arena</div></div>
 </div>
-<button class="join-btn" onclick="join()">JOIN</button>
-</div>
-
-<div class="server">
-<div>
-<b>Sea 3 - Raid #02</b><br>
-<span class="players">2/12 Players</span> | Ping 24ms | Country: Indonesia<br>
-<span class="tag">Dough King</span><span class="tag">Boss Spawn</span>
-</div>
-<button class="join-btn" onclick="join()">JOIN</button>
-</div>
-
-<div class="server">
-<div>
-<b>Sea 2 - Farm #15</b><br>
-<span class="players">4/12 Players</span> | Ping 39ms | Country: Thailand<br>
-<span class="tag">Leviathan</span><span class="tag">Farm</span>
-</div>
-<button class="join-btn" onclick="join()">JOIN</button>
-</div>
-
-</div>
-
-<div class="back"><a href="index.html">Back to Server</a></div>
-
-<script>
-function join(){
-window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
-}
-</script>
-</body>
-</html>
+</body></html>
