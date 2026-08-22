@@ -6,19 +6,15 @@
   <title>BLOX FRUITS - Server Hub</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { 
-      background: #0c0c0c;
-      color:white; 
-      font-family:'Segoe UI', Arial; 
-    }
-    /* HEADER */
+    body { background: #0c0c0c; color:white; font-family:Arial; }
+    
     .header {
       background: linear-gradient(90deg, #ff8c00, #ffa500);
       padding: 15px 20px;
       text-align:center;
-      box-shadow: 0 4px 15px rgba(255,165,0,0.4);
     }
     .header h1 { color:#000; font-size:28px; font-weight:900; }
+    
     .stats {
       background:#1a1a1a;
       padding:10px;
@@ -32,4 +28,16 @@
     h2 { color:#ffa500; margin-bottom:15px; text-align:center; }
 
     .server-card {
-      background: #1a
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius:10px;
+      padding:15px 20px;
+      margin-bottom:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .server-card:hover { border-color:#ffa500; }
+    .server-name { font-weight:bold; font-size:16px; }
+    .server-detail { font-size:13px; color:#999; margin-top:5px; }
+    .tag { background:#333; color:#ffa500; padding:3px 8px; border-radius:5px; font-size:11px;
