@@ -11,9 +11,11 @@
 body{
 background: #0b0b0b;
 background-image: 
+  radial-gradient(circle at 20% 50%, rgba(255,106,0,0.1) 0%, transparent 50%),
+  radial-gradient(circle at 80% 50%, rgba(255,106,0,0.1) 0%, transparent 50%),
   linear-gradient(rgba(255,106,0,0.05) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255,106,0,0.05) 1px, transparent 1px); /* GRID PATTERN AMAN */
-background-size: 40px 40px;
+  linear-gradient(90deg, rgba(255,106,0,0.05) 1px, transparent 1px);
+background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
 color:#fff;
 font-family:'Montserrat',Arial,sans-serif;
 margin:0;
@@ -22,7 +24,7 @@ overflow-x:hidden;
 }
 
 /* OPTIMASI GPU */
-#particles, .floating, .server, .join-btn{
+#particles, .floating, .server, .join-btn, .badge{
 will-change: transform;
 transform: translateZ(0);
 }
@@ -35,32 +37,29 @@ width:100%;
 height:100%;
 z-index:0;
 pointer-events:none;
-opacity:0.4;
+opacity:0.5;
 }
 
 /* FLOATING ACCESSORIES BLOX FRUITS */
 .floating{
 position:fixed;
 font-size:45px;
-opacity:0.1;
-animation:floatAround 30s infinite linear;
+opacity:0.12;
+animation:floatAround 28s infinite linear;
 z-index:0;
-filter:drop-shadow(0 0 10px rgba(255,106,0,0.5));
+filter:drop-shadow(0 0 15px rgba(255,106,0,0.6));
 }
 @keyframes floatAround{
 0%{transform:translate(0,0) rotate(0deg)}
-25%{transform:translate(100px,200px) rotate(90deg)}
-50%{transform:translate(0,400px) rotate(180deg)}
-75%{transform:translate(-100px,200px) rotate(270deg)}
 100%{transform:translate(0,0) rotate(360deg)}
 }
-
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
 
 .header{
 background:#1a1a1a;
 border-bottom:5px solid #ff6a00;
-padding:35px 20px;
+padding:40px 20px;
 text-align:center;
 position:relative;
 z-index:2;
@@ -69,23 +68,38 @@ box-shadow: 0 5px 0 #cc5200;
 .header h1{
 color:#ff6a00;
 margin:0;
-font-size:48px;
+font-size:52px;
 font-weight:900;
 font-family:'Anton',sans-serif;
-letter-spacing:3px;
-text-shadow: 3px 3px 0 #000;
+letter-spacing:4px;
+text-shadow: 4px 4px 0 #000;
+animation:float 2s ease-in-out infinite;
+}
+.header h1::after{content:' 🍊';animation:shake 1s infinite}
+
+/* BADGE BARU */
+.badges{display:flex;justify-content:center;gap:10px;margin-top:15px;flex-wrap:wrap}
+.badge{
+background:#ff6a00;
+color:#000;
+padding:6px 14px;
+border-radius:20px;
+font-size:12px;
+font-weight:900;
+font-family:'Anton',sans-serif;
+box-shadow:0 0 10px rgba(255,106,0,0.5);
 animation:float 2s ease-in-out infinite;
 }
 
 .stats{
 background:#111;
-padding:15px;
+padding:18px;
 text-align:center;
 border-bottom:3px solid #ff6a00;
 position:relative;
 z-index:2;
 }
-.stats span{margin:0 25px;color:#ffaa00;font-size:15px;font-weight:800}
+.stats span{margin:0 20px;color:#ffaa00;font-size:15px;font-weight:800}
 .stats b{color:#00ff88;font-size:18px}
 
 .container{max-width:850px;margin:40px auto;padding:0 15px;position:relative;z-index:2}
@@ -100,6 +114,7 @@ padding:10px 0;
 border-bottom:3px solid #333;
 text-align:left;
 }
+h2::before{content:'⚔️ ';}
 
 .server{
 background:#161616;
@@ -124,13 +139,14 @@ transition:0.3s;
 opacity:0;
 }
 .server:hover::after{
-right:10px;
+right:15px;
 opacity:1;
 }
 .server:hover{
 background:#1f1f1f;
 border-color:#ff6a00;
-transform:translateX(8px);
+transform:translateX(10px);
+box-shadow:0 0 20px rgba(255,106,0,0.3);
 }
 
 .server b{font-size:18px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800}
@@ -158,6 +174,7 @@ box-shadow: 0 0 0 #cc5200;
 }
 .join-btn:hover{
 background:#ff8533;
+transform:scale(1.05);
 }
 .join-btn::before{content:'⚔️ ';}
 
@@ -196,29 +213,42 @@ transition:0.2s;
 .footer a:hover{
 background:#ff6a00;
 color:#000;
+transform:translateY(-3px);
 }
 .copyright{margin-top:25px;color:#444;font-size:12px}
 
 @media (max-width: 768px) {
 .floating { display: none; }
-#particles { opacity:0.1; }
+#particles { opacity:0.15; }
 .header h1{font-size:32px}
+.badges{gap:6px}
 </style>
 </head>
 <body>
 
 <canvas id="particles"></canvas>
 
-<!-- ACCESSORIES BLOX FRUITS MERIAH -->
-<div class="floating" style="top:10%;left:5%;animation-delay:0s">🍊</div> <!-- Kitsune -->
-<div class="floating" style="top:25%;right:8%;animation-delay:5s">🍇</div> <!-- Dragon -->
-<div class="floating" style="top:40%;left:10%;animation-delay:10s">🍍</div> <!-- Buddha -->
-<div class="floating" style="top:60%;right:5%;animation-delay:15s">⚔️</div> <!-- Dark Blade -->
-<div class="floating" style="top:75%;left:15%;animation-delay:20s">🔥</div> <!-- Magma -->
-<div class="floating" style="top:50%;left:50%;animation-delay:25s">🌪️</div> <!-- Quake -->
-<div class="floating" style="top:85%;right:20%;animation-delay:3s">💎</div> <!-- Diamond -->
+<!-- ACCESSORIES BLOX FRUITS MERIAH +10 -->
+<div class="floating" style="top:8%;left:4%;animation-delay:0s">🍊</div> <!-- Kitsune -->
+<div class="floating" style="top:22%;right:6%;animation-delay:4s">🍇</div> <!-- Dragon -->
+<div class="floating" style="top:38%;left:8%;animation-delay:8s">🍍</div> <!-- Buddha -->
+<div class="floating" style="top:55%;right:4%;animation-delay:12s">⚔️</div> <!-- Dark Blade -->
+<div class="floating" style="top:70%;left:12%;animation-delay:16s">🔥</div> <!-- Magma -->
+<div class="floating" style="top:45%;left:50%;animation-delay:20s">🌪️</div> <!-- Quake -->
+<div class="floating" style="top:82%;right:18%;animation-delay:2s">💎</div> <!-- Diamond -->
+<div class="floating" style="top:15%;left:85%;animation-delay:6s">❄️</div> <!-- Ice -->
+<div class="floating" style="top:65%;left:88%;animation-delay:10s">🌩️</div> <!-- Thunder -->
+<div class="floating" style="top:90%;left:5%;animation-delay:14s">👑</div> <!-- Yama -->
 
-<div class="header"><h1>BLOX FRUITS SERVER HUB</h1></div>
+<div class="header">
+<h1>BLOX FRUITS SERVER HUB</h1>
+<div class="badges">
+<span class="badge">VER 26</span>
+<span class="badge">UPDATE 1</span>
+<span class="badge">NO LAG</span>
+</div>
+</div>
+
 <div class="stats">
 <span>Players Online: <b>2,341,567</b></span>
 <span>6 Servers</span>
@@ -255,7 +285,7 @@ function join(){
 window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
 }
 
-// PARTICLE API ORANYE
+// PARTICLE API ORANYE UPGRADE
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 let animationId;
@@ -266,14 +296,14 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particles = [];
-for(let i=0; i<18; i++){
+for(let i=0; i<20; i++){
 particles.push({
 x: Math.random() * canvas.width,
 y: Math.random() * canvas.height,
 size: Math.random() * 2 + 1,
-speedX: Math.random() * 0.6 - 0.3,
-speedY: Math.random() * 0.6 - 0.3,
-color: `hsl(25, 100%, 50%)`
+speedX: Math.random() * 0.5 - 0.25,
+speedY: Math.random() * 0.5 - 0.25,
+color: `hsl(${20 + Math.random()*20}, 100%, 50%)` // oranye + kuning
 });
 }
 
