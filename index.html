@@ -9,14 +9,16 @@
 
 *{box-sizing:border-box}
 body{
-background:#0b0b0b;
+background: #0b0b0b;
+background-image: 
+  linear-gradient(rgba(255,106,0,0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,106,0,0.05) 1px, transparent 1px); /* GRID PATTERN AMAN */
+background-size: 40px 40px;
 color:#fff;
 font-family:'Montserrat',Arial,sans-serif;
 margin:0;
 padding:0;
 overflow-x:hidden;
-background-image: url('https://i.imgur.com/8QY3Z2p.png'); /* texture gelap mirip BF */
-background-size: 400px;
 }
 
 /* OPTIMASI GPU */
@@ -33,40 +35,46 @@ width:100%;
 height:100%;
 z-index:0;
 pointer-events:none;
-opacity:0.3; /* dikurangin biar gak norak */
+opacity:0.4;
 }
 
-/* FLOATING ICONS BF - LEBIH JARANG */
+/* FLOATING ACCESSORIES BLOX FRUITS */
 .floating{
 position:fixed;
-font-size:40px;
-opacity:0.05; /* dari 0.08 ke 0.05 */
-animation:floatAround 35s infinite linear; /* dari 25s ke 35s */
+font-size:45px;
+opacity:0.1;
+animation:floatAround 30s infinite linear;
 z-index:0;
-filter:blur(2px);
+filter:drop-shadow(0 0 10px rgba(255,106,0,0.5));
 }
 @keyframes floatAround{
 0%{transform:translate(0,0) rotate(0deg)}
+25%{transform:translate(100px,200px) rotate(90deg)}
+50%{transform:translate(0,400px) rotate(180deg)}
+75%{transform:translate(-100px,200px) rotate(270deg)}
 100%{transform:translate(0,0) rotate(360deg)}
 }
 
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
 .header{
 background:#1a1a1a;
-border-bottom:5px solid #ff6a00; /* garis oranye tegas kayak BF */
+border-bottom:5px solid #ff6a00;
 padding:35px 20px;
 text-align:center;
 position:relative;
 z-index:2;
-box-shadow: 0 5px 0 #cc5200; /* efek 3D kotak */
+box-shadow: 0 5px 0 #cc5200;
 }
 .header h1{
 color:#ff6a00;
 margin:0;
 font-size:48px;
 font-weight:900;
-font-family:'Anton',sans-serif; /* font tebel kayak logo BF */
+font-family:'Anton',sans-serif;
 letter-spacing:3px;
-text-shadow: 3px 3px 0 #000; /* shadow tegas */
+text-shadow: 3px 3px 0 #000;
+animation:float 2s ease-in-out infinite;
 }
 
 .stats{
@@ -89,8 +97,8 @@ font-family:'Anton',sans-serif;
 letter-spacing:2px;
 margin:40px 0 20px 0;
 padding:10px 0;
-border-bottom:3px solid #333; /* garis simpel */
-text-align:left; /* rata kiri kayak di game */
+border-bottom:3px solid #333;
+text-align:left;
 }
 
 .server{
@@ -98,17 +106,31 @@ background:#161616;
 border:3px solid #2a2a2a;
 margin:15px 0;
 padding:18px 22px;
-border-radius:0; /* KOTAK, gak rounded lebay */
+border-radius:0;
 display:flex;
 justify-content:space-between;
 align-items:center;
 transition:0.2s;
-border-left:8px solid #ff6a00; /* garis oranye tebel kiri */
+border-left:8px solid #ff6a00;
+position:relative;
+overflow:hidden;
+}
+.server::after{ /* EFEK KILAT PAS HOVER */
+content:'⚡';
+position:absolute;
+right:-30px;
+font-size:25px;
+transition:0.3s;
+opacity:0;
+}
+.server:hover::after{
+right:10px;
+opacity:1;
 }
 .server:hover{
 background:#1f1f1f;
 border-color:#ff6a00;
-transform:translateX(5px); /* hover simpel */
+transform:translateX(8px);
 }
 
 .server b{font-size:18px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800}
@@ -119,24 +141,25 @@ transform:translateX(5px); /* hover simpel */
 .join-btn{
 background:#ff6a00;
 color:#000;
-border:3px solid #cc5200; /* border 3D */
+border:3px solid #cc5200;
 padding:12px 26px;
-border-radius:0; /* KOTAK */
+border-radius:0;
 font-weight:900;
 cursor:pointer;
 font-size:16px;
 font-family:'Anton',sans-serif;
 letter-spacing:1px;
 transition:0.15s;
-box-shadow: 0 4px 0 #cc5200; /* efek tombol ditekan */
+box-shadow: 0 4px 0 #cc5200;
 }
-.join-btn:active{ /* efek pas diklik */
+.join-btn:active{
 transform: translateY(4px);
 box-shadow: 0 0 0 #cc5200;
 }
 .join-btn:hover{
 background:#ff8533;
 }
+.join-btn::before{content:'⚔️ ';}
 
 /* FOOTER */
 .footer{
@@ -160,7 +183,7 @@ background:#161616;
 border:3px solid #ff6a00;
 color:#ff6a00;
 padding:14px 26px;
-border-radius:0; /* KOTAK */
+border-radius:0;
 text-decoration:none;
 margin:10px;
 display:inline-block;
@@ -176,10 +199,9 @@ color:#000;
 }
 .copyright{margin-top:25px;color:#444;font-size:12px}
 
-/* MATIIN EFEK BERAT DI HP */
 @media (max-width: 768px) {
 .floating { display: none; }
-#particles { display: none; }
+#particles { opacity:0.1; }
 .header h1{font-size:32px}
 </style>
 </head>
@@ -187,10 +209,14 @@ color:#000;
 
 <canvas id="particles"></canvas>
 
-<!-- FLOATING ICONS LEBIH DIKIT -->
-<div class="floating" style="top:15%;left:8%;animation-delay:0s">🍊</div>
-<div class="floating" style="top:50%;right:10%;animation-delay:10s">⚔️</div>
-<div class="floating" style="top:85%;left:15%;animation-delay:20s">🔥</div>
+<!-- ACCESSORIES BLOX FRUITS MERIAH -->
+<div class="floating" style="top:10%;left:5%;animation-delay:0s">🍊</div> <!-- Kitsune -->
+<div class="floating" style="top:25%;right:8%;animation-delay:5s">🍇</div> <!-- Dragon -->
+<div class="floating" style="top:40%;left:10%;animation-delay:10s">🍍</div> <!-- Buddha -->
+<div class="floating" style="top:60%;right:5%;animation-delay:15s">⚔️</div> <!-- Dark Blade -->
+<div class="floating" style="top:75%;left:15%;animation-delay:20s">🔥</div> <!-- Magma -->
+<div class="floating" style="top:50%;left:50%;animation-delay:25s">🌪️</div> <!-- Quake -->
+<div class="floating" style="top:85%;right:20%;animation-delay:3s">💎</div> <!-- Diamond -->
 
 <div class="header"><h1>BLOX FRUITS SERVER HUB</h1></div>
 <div class="stats">
@@ -218,9 +244,9 @@ color:#000;
 
 <div class="footer">
 <div class="footer-title">NAVIGATION</div>
-<a href="trading.html">TRADING</a>
-<a href="boss.html">BOSS HUNT</a>
-<a href="pvp.html">PVP ARENA</a>
+<a href="trading.html">💰 TRADING</a>
+<a href="boss.html">👹 BOSS HUNT</a>
+<a href="pvp.html">⚔️ PVP ARENA</a>
 <div class="copyright">Copyright 2026 BLOX FRUITS SERVER HUB</div>
 </div>
 
@@ -229,7 +255,7 @@ function join(){
 window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
 }
 
-// PARTICLE SEDIKIT + 30FPS
+// PARTICLE API ORANYE
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 let animationId;
@@ -240,14 +266,14 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particles = [];
-for(let i=0; i<15; i++){ // 15 partikel doang
+for(let i=0; i<18; i++){
 particles.push({
 x: Math.random() * canvas.width,
 y: Math.random() * canvas.height,
-size: Math.random() * 1.5 + 1,
-speedX: Math.random() * 0.5 - 0.25,
-speedY: Math.random() * 0.5 - 0.25,
-color: `hsl(${25}, 100%, 50%)` // warna oranye doang
+size: Math.random() * 2 + 1,
+speedX: Math.random() * 0.6 - 0.3,
+speedY: Math.random() * 0.6 - 0.3,
+color: `hsl(25, 100%, 50%)`
 });
 }
 
