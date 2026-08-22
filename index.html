@@ -5,70 +5,85 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLOX FRUITS - Server Hub</title>
 <style>
-body{
-background:#0a0a0a;
-color:#fff;
-font-family:'Segoe UI',Arial;
-margin:0;
-padding:0;
-background-image:radial-gradient(#ffa50010 1px, transparent 1px);
-background-size:30px 30px;
-}
-.header{
-background:linear-gradient(90deg,#ff8c00,#ffa500);
-padding:25px 20px;
-text-align:center;
-box-shadow:0 0 25px rgba(255,165,0,0.4);
-border-bottom:3px solid #000;
-}
-.header h1{
-color:#000;
-margin:0;
-font-size:34px;
-font-weight:900;
-letter-spacing:2px;
-text-shadow:0 2px 5px rgba(0,0,0,0.3);
-}
-.stats{
-background:#151515;
-padding:14px;
-text-align:center;
-border-bottom:2px solid #ffa500;
-}
+body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Arial;margin:0;padding:0}
+.header{background:linear-gradient(90deg,#ff8c00,#ffa500);padding:25px 20px;text-align:center;border-bottom:4px solid #000}
+.header h1{color:#000;margin:0;font-size:34px;font-weight:900;letter-spacing:2px}
+.stats{background:#151515;padding:14px;text-align:center;border-bottom:2px solid #ffa500}
 .stats span{margin:0 20px;color:#ddd;font-size:15px}
 .stats b{color:#4caf50;font-size:16px}
 .container{max-width:700px;margin:25px auto;padding:0 15px}
-h2{
-color:#ffa500;
-text-align:center;
-font-size:22px;
-margin:30px 0 15px 0;
-text-shadow:0 0 8px rgba(255,165,0,0.5);
+h2{color:#ffa500;text-align:center;font-size:22px;margin:30px 0 15px 0;border-bottom:2px solid #333;padding-bottom:8px}
+.server{background:#1a1a1a;border:2px solid #333;margin:15px 0;padding:18px;border-radius:12px;display:flex;justify-content:space-between;align-items:center}
+.server:hover{border-color:#ffa500;background:#202020}
+.tag{background:#2a2a2a;color:#ffa500;padding:4px 10px;border-radius:5px;font-size:12px;margin-right:6px;font-weight:bold;border:1px solid #444}
+.players{color:#4caf50;font-weight:bold;font-size:15px}
+.join-btn{background:#ffa500;color:#000;border:0;padding:12px 24px;border-radius:10px;font-weight:900;cursor:pointer;font-size:15px}
+.join-btn:hover{background:#ffc04d}
+.footer{background:#111;margin-top:50px;padding:25px;text-align:center;border-top:4px solid #ffa500}
+.footer a{background:#222;border:2px solid #444;color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;margin:6px;display:inline-block;font-weight:bold}
+.footer a:hover{background:#ffa500;color:#000;border-color:#ffa500}
+</style>
+</head>
+<body>
+
+<div class="header"><h1>BLOX FRUITS SERVER HUB</h1></div>
+<div class="stats">
+<span>Players Online: <b>1,247,892</b></span>
+<span>4 Servers</span>
+<span>Region: Global</span>
+</div>
+
+<div class="container">
+<h2>SERVER LIST</h2>
+
+<div class="server">
+<div>
+<b>Sea 3 - Server #02</b><br>
+<span class="players">2/12 Players</span> | Ping 24ms | Country: Indonesia<br>
+<span class="tag">Boss Spawn</span><span class="tag">Low Player</span>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<div class="server">
+<div>
+<b>Sea 2 - Server #11</b><br>
+<span class="players">10/12 Players</span> | Ping 38ms | Country: USA<br>
+<span class="tag">PvP</span><span class="tag">High Action</span>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<div class="server">
+<div>
+<b>Sea 1 - Server #04</b><br>
+<span class="players">6/12 Players</span> | Ping 31ms | Country: Japan<br>
+<span class="tag">Trading</span><span class="tag">Safe Zone</span>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<div class="server">
+<div>
+<b>Sea 3 - Server #09</b><br>
+<span class="players">1/12 Players</span> | Ping 52ms | Country: Brazil<br>
+<span class="tag">Boss Spawn</span><span class="tag">Kitsune</span>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+</div>
+
+<div class="footer">
+<a href="trading.html">Trading</a>
+<a href="boss.html">Boss</a>
+<a href="pvp.html">PvP</a>
+</div>
+
+<script>
+function join(){
+window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
 }
-.server{
-background:#1a1a1a;
-border:2px solid #2a2a2a;
-margin:15px 0;
-padding:18px;
-border-radius:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-transition:0.3s;
-}
-.server:hover{
-border-color:#ffa500;
-transform:translateX(8px);
-box-shadow:0 0 15px rgba(255,165,0,0.3);
-}
-.tag{
-background:#2a2a2a;
-color:#ffa500;
-padding:4px 10px;
-border-radius:5px;
-font-size:12px;
-margin-right:6px;
-font-weight:bold;
-border:1px solid #333;
-}
-.players{color:#4caf50;font-weight:bold;font-size:
+</script>
+</body>
+</html>
