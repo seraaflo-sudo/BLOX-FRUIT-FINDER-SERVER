@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLOX FRUITS - Server Hub</title>
+<title>BLOX FRUITS - Server Hub 3D</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@700;800;900&display=swap');
 
@@ -11,16 +11,15 @@
 body{
 background: #050505;
 background-image: 
-  radial-gradient(circle at 20% 50%, rgba(255,106,0,0.15) 0%, transparent 50%),
-  radial-gradient(circle at 80% 50%, rgba(255,106,0,0.15) 0%, transparent 50%),
-  linear-gradient(rgba(255,106,0,0.07) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255,106,0,0.07) 1px, transparent 1px);
-background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  radial-gradient(circle at 20% 50%, rgba(255,106,0,0.2) 0%, transparent 50%),
+  radial-gradient(circle at 80% 50%, rgba(255,106,0,0.2) 0%, transparent 50%);
+background-size: 100% 100%, 100% 100%;
 color:#fff;
 font-family:'Montserrat',Arial,sans-serif;
 margin:0;
 padding:0;
 overflow-x:hidden;
+perspective: 1000px; /* BIKIN 3D */
 }
 
 /* LOADING SCREEN */
@@ -31,134 +30,132 @@ flex-direction:column;transition:1s;
 }
 #loader h1{font-family:'Anton';color:#ff6a00;font-size:40px;animation:float 1s infinite}
 #loader .spin{width:60px;height:60px;border:5px solid #ff6a00;border-top:5px solid transparent;border-radius:50%;animation:spin 1s linear infinite}
-
 @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 
-/* OPTIMASI GPU */
-#particles, .floating, .server, .join-btn, .badge, .rain{
-will-change: transform;
-transform: translateZ(0);
+/* 3D SCENE */
+.scene{
+transform-style: preserve-3d;
 }
 
 /* CANVAS PARTICLE + RAIN */
 #particles, #rain{
 position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;
 }
-#particles{opacity:0.6}
-#rain{opacity:0.3}
+#particles{opacity:0.5}
+#rain{opacity:0.2}
 
-/* FLOATING ACCESSORIES BLOX FRUITS */
+/* FLOATING 3D ACCESSORIES */
 .floating{
-position:fixed;font-size:50px;opacity:0.15;animation:floatAround 25s infinite linear;
+position:fixed;font-size:50px;opacity:0.15;animation:float3D 20s infinite linear;
 z-index:0;filter:drop-shadow(0 0 20px rgba(255,106,0,0.8));
+transform-style: preserve-3d;
 }
-@keyframes floatAround{0%{transform:translate(0,0) rotate(0deg)}100%{transform:translate(0,0) rotate(360deg)}}
+@keyframes float3D{
+0%{transform:translateZ(0) rotateY(0)}
+25%{transform:translateZ(100px) rotateY(90deg)}
+50%{transform:translateZ(0) rotateY(180deg)}
+75%{transform:translateZ(-100px) rotateY(270deg)}
+100%{transform:translateZ(0) rotateY(360deg)}
+}
+
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
-@keyframes neon{0%,100%{text-shadow:0 0 10px #ff6a00,0 0 20px #ff6a00}50%{text-shadow:0 0 20px #ffaa00,0 0 40px #ffaa00}}
+@keyframes neon{0%,100%{text-shadow:0 0 10px #ff6a00,0 0 20px #ff6a00}50%{text-shadow:0 0 30px #ffaa00,0 0 60px #ffaa00}}
 
 .header{
 background:#1a1a1a;border-bottom:5px solid #ff6a00;padding:50px 20px;text-align:center;
-position:relative;z-index:2;box-shadow: 0 5px 0 #cc5200;
+position:relative;z-index:2;box-shadow: 0 10px 0 #cc5200;
+transform: translateZ(50px); /* MAJU KE DEPAN */
 }
 .header h1{
 color:#ff6a00;margin:0;font-size:56px;font-weight:900;font-family:'Anton',sans-serif;
-letter-spacing:5px;text-shadow: 4px 4px 0 #000;animation:float 2s ease-in-out infinite, neon 2s infinite;
+letter-spacing:5px;text-shadow: 4px 4px 0 #000;animation:neon 2s infinite;
+transform: translateZ(20px);
 }
-.header h1::after{content:' 🍊';animation:shake 0.8s infinite}
 
-/* BADGE BARU */
 .badges{display:flex;justify-content:center;gap:12px;margin-top:15px;flex-wrap:wrap}
 .badge{
 background:linear-gradient(90deg,#ff6a00,#ffaa00);color:#000;padding:8px 16px;border-radius:25px;
 font-size:13px;font-weight:900;font-family:'Anton',sans-serif;box-shadow:0 0 15px rgba(255,106,0,0.7);
-animation:float 2s ease-in-out infinite;
+transform: translateZ(10px);
 }
 
 .stats{
 background:#111;padding:20px;text-align:center;border-bottom:3px solid #ff6a00;position:relative;z-index:2;
+transform: translateZ(30px);
 }
 .stats span{margin:0 25px;color:#ffaa00;font-size:16px;font-weight:800}
 .stats b{color:#00ff88;font-size:20px;text-shadow:0 0 10px #00ff88}
 
-.container{max-width:900px;margin:50px auto;padding:0 15px;position:relative;z-index:2}
+.container{max-width:900px;margin:50px auto;padding:0 15px;position:relative;z-index:2;transform-style: preserve-3d;}
 h2{
 color:#ff6a00;font-size:28px;font-weight:800;font-family:'Anton',sans-serif;letter-spacing:2px;
 margin:50px 0 25px 0;padding:10px 0;border-bottom:3px solid #333;text-align:left;
+transform: translateZ(40px);
 }
-h2::before{content:'⚔️ ';}
 
+/* 3D CARD SERVER */
 .server{
 background:linear-gradient(135deg,#161616,#1a1a1a);border:3px solid #2a2a2a;margin:18px 0;padding:20px 25px;
-border-radius:0;display:flex;justify-content:space-between;align-items:center;transition:0.25s;
+border-radius:0;display:flex;justify-content:space-between;align-items:center;transition:0.3s;
 border-left:10px solid #ff6a00;position:relative;overflow:hidden;
+transform-style: preserve-3d;
+box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-.server::before{ /* SHINE EFFECT */
-content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;
-background:linear-gradient(90deg,transparent,rgba(255,106,0,0.2),transparent);transition:0.6s;
-}
-.server:hover::before{left:100%}
-.server::after{ /* EFEK KILAT PAS HOVER */
-content:'⚡';position:absolute;right:-40px;font-size:28px;transition:0.3s;opacity:0;
-}
-.server:hover::after{right:20px;opacity:1}
 .server:hover{
-background:#1f1f1f;border-color:#ff6a00;transform:translateX(12px) scale(1.01);
-box-shadow:0 0 30px rgba(255,106,0,0.4);
+background:#1f1f1f;border-color:#ff6a00;
+transform: translateZ(30px) rotateX(5deg); /* TILT 3D PAS HOVER */
+box-shadow:0 20px 50px rgba(255,106,0,0.5);
 }
+.server::after{ /* EFEK KILAT 3D */
+content:'⚡';position:absolute;right:20px;font-size:28px;opacity:0;transition:0.3s;
+transform: translateZ(20px);
+}
+.server:hover::after{opacity:1;animation:shake 0.5s infinite}
 
-.server b{font-size:19px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:900}
+.server b{font-size:19px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;transform: translateZ(10px);}
 .server b::before{content:'🌊 ';font-size:19px}
-.players{color:#00ff88;font-weight:900;font-size:15px}
-.info{color:#aaa;font-size:13px;margin-top:5px}
+.players{color:#00ff88;font-weight:900;font-size:15px;transform: translateZ(10px);}
+.info{color:#aaa;font-size:13px;margin-top:5px;transform: translateZ(10px);}
 
 .join-btn{
 background:linear-gradient(90deg,#ff6a00,#ff8533);color:#000;border:3px solid #cc5200;padding:14px 28px;
 border-radius:0;font-weight:900;cursor:pointer;font-size:17px;font-family:'Anton',sans-serif;
-letter-spacing:1px;transition:0.15s;box-shadow: 0 5px 0 #cc5200;position:relative;
+letter-spacing:1px;transition:0.15s;box-shadow: 0 8px 0 #cc5200;position:relative;
+transform: translateZ(20px);
 }
-.join-btn:active{transform: translateY(5px);box-shadow: 0 0 0 #cc5200;}
-.join-btn:hover{background:linear-gradient(90deg,#ff8533,#ffaa00);transform:scale(1.08);}
-.join-btn::before{content:'⚔️ ';}
+.join-btn:active{transform: translateZ(20px) translateY(8px);box-shadow: 0 0 0 #cc5200;}
+.join-btn:hover{background:linear-gradient(90deg,#ff8533,#ffaa00);transform: translateZ(25px) scale(1.08);}
 
-/* FOOTER */
 .footer{
 background:#0a0a0a;margin-top:100px;padding:50px 20px;text-align:center;border-top:5px solid #ff6a00;
-position:relative;z-index:2;
+position:relative;z-index:2;transform: translateZ(50px);
 }
-.footer-title{
-color:#ff6a00;font-family:'Anton',sans-serif;font-size:22px;margin-bottom:25px;letter-spacing:3px;
-}
+.footer-title{color:#ff6a00;font-family:'Anton',sans-serif;font-size:22px;margin-bottom:25px;letter-spacing:3px;}
 .footer a{
 background:#161616;border:3px solid #ff6a00;color:#ff6a00;padding:16px 30px;border-radius:0;
 text-decoration:none;margin:12px;display:inline-block;font-weight:900;font-family:'Anton',sans-serif;
-font-size:16px;letter-spacing:1px;transition:0.25s;
+font-size:16px;letter-spacing:1px;transition:0.25s;transform: translateZ(20px);
 }
 .footer a:hover{
-background:#ff6a00;color:#000;transform:translateY(-5px) scale(1.05);
+background:#ff6a00;color:#000;transform: translateZ(30px) translateY(-5px);
 box-shadow:0 0 30px rgba(255,106,0,0.6);
 }
-.copyright{margin-top:30px;color:#444;font-size:13px}
 
 @media (max-width: 768px) {
 .floating, #rain { display: none; }
-#particles { opacity:0.2; }
+#particles { opacity:0.15; }
 .header h1{font-size:34px}
-.badges{gap:8px}
+.server:hover{transform: translateZ(10px)} /* HP dikurangin 3D nya */
 </style>
 </head>
 <body>
 
-<!-- LOADING SCREEN -->
-<div id="loader">
-<h1>LOADING BLOX FRUITS...</h1>
-<div class="spin"></div>
-</div>
-
+<div id="loader"><h1>LOADING 3D BLOX FRUITS...</h1><div class="spin"></div></div>
 <canvas id="particles"></canvas>
 <canvas id="rain"></canvas>
 
-<!-- ACCESSORIES BLOX FRUITS MERIAH +12 -->
+<div class="scene">
+<!-- ACCESSORIES 3D +12 -->
 <div class="floating" style="top:8%;left:4%;animation-delay:0s">🍊</div>
 <div class="floating" style="top:22%;right:6%;animation-delay:2s">🍇</div>
 <div class="floating" style="top:38%;left:8%;animation-delay:4s">🍍</div>
@@ -176,7 +173,7 @@ box-shadow:0 0 30px rgba(255,106,0,0.6);
 <h1>BLOX FRUITS SERVER HUB</h1>
 <div class="badges">
 <span class="badge">VER 26</span>
-<span class="badge">UPDATE 1</span>
+<span class="badge">3D MODE</span>
 <span class="badge">NO LAG</span>
 <span class="badge">GOD TIER</span>
 </div>
@@ -191,15 +188,10 @@ box-shadow:0 0 30px rgba(255,106,0,0.6);
 <div class="container">
 <h2>SERVER LIST</h2>
 
-<!-- SEA 1 -->
 <div class="server"><div><b>Sea 1 - Server #01</b><div class="info"><span class="players">3/12 Players</span> | Ping 22ms | 🇮🇩 Indonesia</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
 <div class="server"><div><b>Sea 1 - Server #08</b><div class="info"><span class="players">9/12 Players</span> | Ping 28ms | 🇸🇬 Singapore</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
-
-<!-- SEA 2 -->
 <div class="server"><div><b>Sea 2 - Server #07</b><div class="info"><span class="players">4/12 Players</span> | Ping 45ms | 🇦🇺 Australia</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
 <div class="server"><div><b>Sea 2 - Server #11</b><div class="info"><span class="players">10/12 Players</span> | Ping 38ms | 🇺🇸 USA</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
-
-<!-- SEA 3 -->
 <div class="server"><div><b>Sea 3 - Server #02</b><div class="info"><span class="players">2/12 Players</span> | Ping 24ms | 🇮🇩 Indonesia</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
 <div class="server"><div><b>Sea 3 - Server #20</b><div class="info"><span class="players">11/12 Players</span> | Ping 60ms | 🇺🇸 USA</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
 
@@ -212,47 +204,42 @@ box-shadow:0 0 30px rgba(255,106,0,0.6);
 <a href="pvp.html">⚔️ PVP ARENA</a>
 <div class="copyright">Copyright 2026 BLOX FRUITS SERVER HUB</div>
 </div>
+</div>
 
 <script>
-// LOADING SCREEN HILANG 2 DETIK
-window.addEventListener('load', () => {
-setTimeout(() => {
+// LOADING FIX 3 DETIK + KLIK SKIP
+let loaderGone = false;
+function hideLoader(){
+if(loaderGone) return;
+loaderGone = true;
 document.getElementById('loader').style.opacity = '0';
 setTimeout(() => document.getElementById('loader').style.display = 'none', 1000);
-}, 2000);
-});
+}
+setTimeout(hideLoader, 3000);
+window.addEventListener('load', hideLoader);
+document.getElementById('loader').addEventListener('click', hideLoader);
 
 function join(){
 window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
 }
 
-// PARTICLE + RAIN EFFECT 30FPS
+// PARTICLE + RAIN 30FPS
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 const rainCanvas = document.getElementById('rain');
 const rctx = rainCanvas.getContext('2d');
-let animationId;
-let lastTime = 0;
-const FPS = 30;
+let animationId; let lastTime = 0; const FPS = 30;
 
 canvas.width = rainCanvas.width = window.innerWidth;
 canvas.height = rainCanvas.height = window.innerHeight;
 
 let particles = [];
-for(let i=0; i<22; i++){
-particles.push({
-x: Math.random() * canvas.width,
-y: Math.random() * canvas.height,
-size: Math.random() * 2 + 1,
-speedX: Math.random() * 0.4 - 0.2,
-speedY: Math.random() * 0.4 - 0.2,
-color: `hsl(${20 + Math.random()*20}, 100%, 50%)`
-});
+for(let i=0; i<18; i++){ // dikurangin biar kuat 3D
+particles.push({x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2 + 1, speedX: Math.random() * 0.3 - 0.15, speedY: Math.random() * 0.3 - 0.15, color: `hsl(${20 + Math.random()*20}, 100%, 50%)`});
 }
-
 let raindrops = [];
-for(let i=0; i<100; i++){
-raindrops.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, l: Math.random()*20+10, ys: Math.random()*5+4});
+for(let i=0; i<80; i++){ // dikurangin juga
+raindrops.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, l: Math.random()*20+10, ys: Math.random()*4+3});
 }
 
 function animate(timestamp){
@@ -260,8 +247,6 @@ if(!document.hidden){
 if(timestamp - lastTime > 1000/FPS){
 ctx.clearRect(0,0,canvas.width,canvas.height);
 rctx.clearRect(0,0,rainCanvas.width,rainCanvas.height);
-            
-// PARTIKEL
 particles.forEach(p=>{
 ctx.fillStyle = p.color;
 ctx.beginPath();
@@ -271,9 +256,7 @@ p.x += p.speedX; p.y += p.speedY;
 if(p.x<0||p.x>canvas.width) p.speedX *= -1;
 if(p.y<0||p.y>canvas.height) p.speedY *= -1;
 });
-
-// HUJAN
-rctx.strokeStyle='rgba(255,106,0,0.3)';
+rctx.strokeStyle='rgba(255,106,0,0.25)';
 rctx.lineWidth=1;
 raindrops.forEach(r=>{
 rctx.beginPath();
@@ -283,23 +266,17 @@ rctx.stroke();
 r.y += r.ys;
 if(r.y>canvas.height) r.y = -20;
 });
-
 lastTime = timestamp;
 }
 animationId = requestAnimationFrame(animate);
 }
 animate();
 
-// COUNTER ANIMASI
 let count = 2341567;
 setInterval(() => {
 count += Math.floor(Math.random()*5);
 document.getElementById('playerCount').innerText = count.toLocaleString();
 }, 3000);
-
-document.addEventListener('visibilitychange', () => {
-if(document.hidden){cancelAnimationFrame(animationId);} else {animate();}
-});
 
 window.addEventListener('resize',()=>{
 canvas.width = rainCanvas.width = window.innerWidth;
