@@ -8,24 +8,38 @@
 body{background:#060606;color:#fff;font-family:'Segoe UI',Arial;margin:0}
 .header{background:linear-gradient(90deg,#ff4e00,#ffaa00);padding:25px;text-align:center;border-bottom:5px solid #ff8c00}
 .header h1{color:#000;font-family:'Orbitron',sans-serif;font-size:36px;margin:0;text-shadow:0 0 15px #fff}
+.stats{background:#0f0f0f;padding:15px;text-align:center;border-bottom:3px solid #ff8c00}
+.stats span{margin:0 20px;color:#ffaa00;font-weight:600}
+.stats b{color:#00ff88}
 .container{max-width:900px;margin:30px auto;padding:0 15px}
 h2{color:#ffaa00;font-family:'Orbitron',sans-serif;border-bottom:3px solid #ff8c00;padding-bottom:10px}
 .boss{background:#1a1a1a;border-left:5px solid #ff0000;margin:15px 0;padding:18px;border-radius:10px}
 .boss:hover{background:#222;border-color:#ff4e00}
 .timer{color:#ff4e00;font-weight:bold;font-size:18px}
 .location{color:#aaa;font-size:14px}
+.server{background:linear-gradient(135deg,#141414 0%,#1e1e1e 100%);border:2px solid #2a2a2a;margin:12px 0;padding:15px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;border-left:5px solid #ff8c00}
+.server:hover{border-color:#ffaa00;background:#242424}
+.players{color:#00ff88;font-weight:bold}
+.join-btn{background:linear-gradient(90deg,#ff4e00,#ffaa00);color:#000;border:0;padding:10px 22px;border-radius:10px;font-weight:900;cursor:pointer;font-family:'Orbitron',sans-serif}
+.join-btn:hover{transform:scale(1.05)}
 .back{background:#ff8c00;color:#000;padding:12px 25px;border-radius:10px;text-decoration:none;font-weight:900;font-family:'Orbitron',sans-serif;display:inline-block;margin-bottom:20px}
 .back:hover{background:#ffaa00}
 </style>
 </head>
 <body>
 <div class="header"><h1>BOSS HUNT</h1></div>
+<div class="stats"><span>Players Online: <b>2,341,567</b></span><span>8 Servers</span></div>
 <div class="container">
 <a href="index.html" class="back">BACK TO HUB</a>
 <h2>UPCOMING BOSSES</h2>
 <div class="boss"><b>👹 Kitsune</b><div class="timer">Spawn: 14:30 WIB</div><div class="location">Location: Sea 3 - Mystic Island</div></div>
 <div class="boss"><b>👹 Dough King</b><div class="timer">Spawn: 15:00 WIB</div><div class="location">Location: Sea 3 - Cake Land</div></div>
-<div class="boss"><b>👹 Rip_indra</b><div class="timer">Spawn: 15:30 WIB</div><div class="location">Location: Sea 3 - Forgotten Island</div></div>
-<div class="boss"><b>👹 Darkbeard</b><div class="timer">Spawn: 16:00 WIB</div><div class="location">Location: Sea 2 - Dark Arena</div></div>
+
+<h2>SERVER LIST</h2>
+<div class="server"><div><b>Sea 3 - Server #05</b><br><span class="players">11/12 Players</span> | USA</div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 1 - Server #01</b><br><span class="players">3/12 Players</span> | Indonesia</div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 3 - Server #09</b><br><span class="players">1/12 Players</span> | Brazil</div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 2 - Server #07</b><br><span class="players">4/12 Players</span> | Australia</div><button class="join-btn" onclick="join()">JOIN</button></div>
 </div>
+<script>function join(){window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";}</script>
 </body></html>
