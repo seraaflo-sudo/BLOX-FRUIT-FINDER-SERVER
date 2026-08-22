@@ -2,199 +2,146 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>BLOX FRUITS - Server Hub 3D</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@700;800;900&display=swap');
 
-*{box-sizing:border-box;cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">⚔️</text></svg>') 16 16, auto}
+*{box-sizing:border-box;cursor:default}
 body{
 background: #050505;
 background-image: 
-  radial-gradient(circle at 20% 50%, rgba(255,106,0,0.2) 0%, transparent 50%),
-  radial-gradient(circle at 80% 50%, rgba(255,106,0,0.2) 0%, transparent 50%);
+  radial-gradient(circle at 20% 50%, rgba(255,106,0,0.15) 0%, transparent 50%),
+  radial-gradient(circle at 80% 50%, rgba(255,106,0,0.15) 0%, transparent 50%);
 background-size: 100% 100%, 100% 100%;
 color:#fff;
 font-family:'Montserrat',Arial,sans-serif;
 margin:0;
 padding:0;
 overflow-x:hidden;
-perspective: 1000px; /* BIKIN 3D */
+perspective: 800px;
 }
 
-/* LOADING SCREEN */
+/* LOADING BARU */
 #loader{
 position:fixed;top:0;left:0;width:100%;height:100%;
 background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;
 flex-direction:column;transition:1s;
 }
-#loader h1{font-family:'Anton';color:#ff6a00;font-size:40px;animation:float 1s infinite}
-#loader .spin{width:60px;height:60px;border:5px solid #ff6a00;border-top:5px solid transparent;border-radius:50%;animation:spin 1s linear infinite}
-@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+#loader h1{font-family:'Anton';color:#ff6a00;font-size:32px;letter-spacing:2px;margin-bottom:20px;text-align:center}
+#loader h1::after{content:' 🍊'}
+.loading-bar{
+width:80%;max-width:400px;height:8px;background:#222;border:2px solid #ff6a00;margin-bottom:20px;
+overflow:hidden;
+}
+.loading-fill{
+height:100%;width:0%;background:linear-gradient(90deg,#ff6a00,#ffaa00);
+animation:load 2s ease-in-out infinite;
+box-shadow:0 0 10px #ff6a00;
+}
+@keyframes load{0%{width:0%}50%{width:100%}100%{width:0%}}
 
-/* 3D SCENE */
-.scene{
-transform-style: preserve-3d;
+.start-btn{
+background:linear-gradient(90deg,#ff6a00,#ff8533);color:#000;border:3px solid #cc5200;
+padding:14px 32px;border-radius:0;font-weight:900;cursor:pointer;font-size:18px;
+font-family:'Anton',sans-serif;letter-spacing:2px;transition:0.15s;
+box-shadow: 0 5px 0 #cc5200;animation:float 1.5s ease-in-out infinite;
 }
+.start-btn:active{transform: translateY(5px);box-shadow: 0 0 0 #cc5200;}
+.start-btn:hover{background:linear-gradient(90deg,#ff8533,#ffaa00);}
 
-/* CANVAS PARTICLE + RAIN */
-#particles, #rain{
-position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;
-}
-#particles{opacity:0.5}
-#rain{opacity:0.2}
+/* SCENE + LAINNYA SAMA KAYA SEBELUMNYA */
+.scene{transform-style: preserve-3d;display:none;} /* AWALNYA DISEMBUNYI */
+#particles, #rain{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+#particles{opacity:0.4} #rain{opacity:0.15}
+.floating{position:fixed;font-size:40px;opacity:0.1;animation:float3D 25s infinite linear;z-index:0;filter:drop-shadow(0 0 15px rgba(255,106,0,0.6));transform-style: preserve-3d;}
+@keyframes float3D{0%{transform:translateZ(0) rotateY(0)}100%{transform:translateZ(0) rotateY(360deg)}}
+@keyframes neon{0%,100%{text-shadow:0 0 10px #ff6a00}50%{text-shadow:0 0 20px #ffaa00}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-/* FLOATING 3D ACCESSORIES */
-.floating{
-position:fixed;font-size:50px;opacity:0.15;animation:float3D 20s infinite linear;
-z-index:0;filter:drop-shadow(0 0 20px rgba(255,106,0,0.8));
-transform-style: preserve-3d;
-}
-@keyframes float3D{
-0%{transform:translateZ(0) rotateY(0)}
-25%{transform:translateZ(100px) rotateY(90deg)}
-50%{transform:translateZ(0) rotateY(180deg)}
-75%{transform:translateZ(-100px) rotateY(270deg)}
-100%{transform:translateZ(0) rotateY(360deg)}
-}
+.header{background:#1a1a1a;border-bottom:4px solid #ff6a00;padding:30px 15px;text-align:center;position:relative;z-index:2;box-shadow: 0 4px 0 #cc5200;transform: translateZ(30px);}
+.header h1{color:#ff6a00;margin:0;font-size:32px;font-weight:900;font-family:'Anton',sans-serif;letter-spacing:2px;text-shadow: 2px 2px 0 #000;animation:neon 2s infinite;transform: translateZ(15px);}
+.badges{display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.badge{background:linear-gradient(90deg,#ff6a00,#ffaa00);color:#000;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:900;font-family:'Anton',sans-serif;box-shadow:0 0 10px rgba(255,106,0,0.5);transform: translateZ(8px);}
+.stats{background:#111;padding:15px;text-align:center;border-bottom:2px solid #ff6a00;position:relative;z-index:2;transform: translateZ(20px);}
+.stats span{margin:0 10px;color:#ffaa00;font-size:12px;font-weight:800;display:inline-block}
+.stats b{color:#00ff88;font-size:14px;text-shadow:0 0 8px #00ff88}
+.container{max-width:100%;margin:30px auto;padding:0 12px;position:relative;z-index:2;transform-style: preserve-3d;}
+h2{color:#ff6a00;font-size:20px;margin:30px 0 15px 0;padding:8px 0;border-bottom:2px solid #333;text-align:left;transform: translateZ(25px);}
 
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-@keyframes neon{0%,100%{text-shadow:0 0 10px #ff6a00,0 0 20px #ff6a00}50%{text-shadow:0 0 30px #ffaa00,0 0 60px #ffaa00}}
+.server{background:linear-gradient(135deg,#161616,#1a1a1a);border:2px solid #2a2a2a;margin:12px 0;padding:14px 16px;border-radius:0;display:flex;justify-content:space-between;align-items:center;transition:0.3s;border-left:6px solid #ff6a00;position:relative;overflow:hidden;transform-style: preserve-3d;box-shadow: 0 5px 15px rgba(0,0,0,0.5);flex-direction:column;align-items:flex-start;gap:10px;}
+.server:hover{background:#1f1f1f;border-color:#ff6a00;transform: translateZ(15px);box-shadow:0 10px 25px rgba(255,106,0,0.4);}
+.server::after{content:'⚡';position:absolute;right:15px;top:15px;font-size:20px;opacity:0.3;}
+.server b{font-size:15px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;transform: translateZ(8px);}
+.server b::before{content:'🌊 '}
+.players{color:#00ff88;font-weight:900;font-size:13px;transform: translateZ(8px);}
+.info{color:#aaa;font-size:11px;margin-top:3px;transform: translateZ(8px);}
+.join-btn{background:linear-gradient(90deg,#ff6a00,#ff8533);color:#000;border:2px solid #cc5200;padding:10px 20px;border-radius:0;font-weight:900;cursor:pointer;font-size:14px;font-family:'Anton',sans-serif;letter-spacing:1px;transition:0.15s;box-shadow: 0 4px 0 #cc5200;position:relative;transform: translateZ(15px);width:100%;}
+.join-btn:active{transform: translateZ(15px) translateY(4px);box-shadow: 0 0 0 #cc5200;}
+.join-btn:hover{background:linear-gradient(90deg,#ff8533,#ffaa00);}
 
-.header{
-background:#1a1a1a;border-bottom:5px solid #ff6a00;padding:50px 20px;text-align:center;
-position:relative;z-index:2;box-shadow: 0 10px 0 #cc5200;
-transform: translateZ(50px); /* MAJU KE DEPAN */
-}
-.header h1{
-color:#ff6a00;margin:0;font-size:56px;font-weight:900;font-family:'Anton',sans-serif;
-letter-spacing:5px;text-shadow: 4px 4px 0 #000;animation:neon 2s infinite;
-transform: translateZ(20px);
-}
+.footer{background:#0a0a0a;margin-top:60px;padding:30px 15px;text-align:center;border-top:4px solid #ff6a00;position:relative;z-index:2;transform: translateZ(30px);}
+.footer-title{color:#ff6a00;font-family:'Anton',sans-serif;font-size:16px;margin-bottom:15px;letter-spacing:2px;}
+.footer a{background:#161616;border:2px solid #ff6a00;color:#ff6a00;padding:12px 20px;border-radius:0;text-decoration:none;margin:8px;display:inline-block;font-weight:900;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:1px;transition:0.25s;transform: translateZ(15px);width:90%;}
+.footer a:hover{background:#ff6a00;color:#000;transform: translateZ(20px);}
+.copyright{margin-top:20px;color:#444;font-size:11px}
 
-.badges{display:flex;justify-content:center;gap:12px;margin-top:15px;flex-wrap:wrap}
-.badge{
-background:linear-gradient(90deg,#ff6a00,#ffaa00);color:#000;padding:8px 16px;border-radius:25px;
-font-size:13px;font-weight:900;font-family:'Anton',sans-serif;box-shadow:0 0 15px rgba(255,106,0,0.7);
-transform: translateZ(10px);
-}
-
-.stats{
-background:#111;padding:20px;text-align:center;border-bottom:3px solid #ff6a00;position:relative;z-index:2;
-transform: translateZ(30px);
-}
-.stats span{margin:0 25px;color:#ffaa00;font-size:16px;font-weight:800}
-.stats b{color:#00ff88;font-size:20px;text-shadow:0 0 10px #00ff88}
-
-.container{max-width:900px;margin:50px auto;padding:0 15px;position:relative;z-index:2;transform-style: preserve-3d;}
-h2{
-color:#ff6a00;font-size:28px;font-weight:800;font-family:'Anton',sans-serif;letter-spacing:2px;
-margin:50px 0 25px 0;padding:10px 0;border-bottom:3px solid #333;text-align:left;
-transform: translateZ(40px);
-}
-
-/* 3D CARD SERVER */
-.server{
-background:linear-gradient(135deg,#161616,#1a1a1a);border:3px solid #2a2a2a;margin:18px 0;padding:20px 25px;
-border-radius:0;display:flex;justify-content:space-between;align-items:center;transition:0.3s;
-border-left:10px solid #ff6a00;position:relative;overflow:hidden;
-transform-style: preserve-3d;
-box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-.server:hover{
-background:#1f1f1f;border-color:#ff6a00;
-transform: translateZ(30px) rotateX(5deg); /* TILT 3D PAS HOVER */
-box-shadow:0 20px 50px rgba(255,106,0,0.5);
-}
-.server::after{ /* EFEK KILAT 3D */
-content:'⚡';position:absolute;right:20px;font-size:28px;opacity:0;transition:0.3s;
-transform: translateZ(20px);
-}
-.server:hover::after{opacity:1;animation:shake 0.5s infinite}
-
-.server b{font-size:19px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;transform: translateZ(10px);}
-.server b::before{content:'🌊 ';font-size:19px}
-.players{color:#00ff88;font-weight:900;font-size:15px;transform: translateZ(10px);}
-.info{color:#aaa;font-size:13px;margin-top:5px;transform: translateZ(10px);}
-
-.join-btn{
-background:linear-gradient(90deg,#ff6a00,#ff8533);color:#000;border:3px solid #cc5200;padding:14px 28px;
-border-radius:0;font-weight:900;cursor:pointer;font-size:17px;font-family:'Anton',sans-serif;
-letter-spacing:1px;transition:0.15s;box-shadow: 0 8px 0 #cc5200;position:relative;
-transform: translateZ(20px);
-}
-.join-btn:active{transform: translateZ(20px) translateY(8px);box-shadow: 0 0 0 #cc5200;}
-.join-btn:hover{background:linear-gradient(90deg,#ff8533,#ffaa00);transform: translateZ(25px) scale(1.08);}
-
-.footer{
-background:#0a0a0a;margin-top:100px;padding:50px 20px;text-align:center;border-top:5px solid #ff6a00;
-position:relative;z-index:2;transform: translateZ(50px);
-}
-.footer-title{color:#ff6a00;font-family:'Anton',sans-serif;font-size:22px;margin-bottom:25px;letter-spacing:3px;}
-.footer a{
-background:#161616;border:3px solid #ff6a00;color:#ff6a00;padding:16px 30px;border-radius:0;
-text-decoration:none;margin:12px;display:inline-block;font-weight:900;font-family:'Anton',sans-serif;
-font-size:16px;letter-spacing:1px;transition:0.25s;transform: translateZ(20px);
-}
-.footer a:hover{
-background:#ff6a00;color:#000;transform: translateZ(30px) translateY(-5px);
-box-shadow:0 0 30px rgba(255,106,0,0.6);
-}
-
-@media (max-width: 768px) {
-.floating, #rain { display: none; }
-#particles { opacity:0.15; }
-.header h1{font-size:34px}
-.server:hover{transform: translateZ(10px)} /* HP dikurangin 3D nya */
+@media (min-width: 769px) {
+.floating{font-size:50px}
+.header h1{font-size:52px}
+.server{flex-direction:row;align-items:center}
+.join-btn{width:auto}
+.footer a{width:auto}
+.stats span{font-size:16px}
+.stats b{font-size:20px}
 </style>
 </head>
 <body>
 
-<div id="loader"><h1>LOADING 3D BLOX FRUITS...</h1><div class="spin"></div></div>
+<!-- LOADING BAR + TOMBOL -->
+<div id="loader">
+<h1>BLOX FRUITS SERVER HUB</h1>
+<div class="loading-bar"><div class="loading-fill"></div></div>
+<button class="start-btn" onclick="startSite()">MULAI ⚔️</button>
+</div>
+
 <canvas id="particles"></canvas>
 <canvas id="rain"></canvas>
 
 <div class="scene">
-<!-- ACCESSORIES 3D +12 -->
-<div class="floating" style="top:8%;left:4%;animation-delay:0s">🍊</div>
-<div class="floating" style="top:22%;right:6%;animation-delay:2s">🍇</div>
-<div class="floating" style="top:38%;left:8%;animation-delay:4s">🍍</div>
-<div class="floating" style="top:55%;right:4%;animation-delay:6s">⚔️</div>
-<div class="floating" style="top:70%;left:12%;animation-delay:8s">🔥</div>
-<div class="floating" style="top:45%;left:50%;animation-delay:10s">🌪️</div>
-<div class="floating" style="top:82%;right:18%;animation-delay:1s">💎</div>
-<div class="floating" style="top:15%;left:85%;animation-delay:3s">❄️</div>
-<div class="floating" style="top:65%;left:88%;animation-delay:5s">🌩️</div>
-<div class="floating" style="top:90%;left:5%;animation-delay:7s">👑</div>
-<div class="floating" style="top:30%;left:92%;animation-delay:9s">🛡️</div>
-<div class="floating" style="top:75%;right:90%;animation-delay:11s">💀</div>
+<!-- ACCESSORIES 8 -->
+<div class="floating" style="top:10%;left:5%;animation-delay:0s">🍊</div>
+<div class="floating" style="top:30%;right:8%;animation-delay:3s">🍇</div>
+<div class="floating" style="top:50%;left:10%;animation-delay:6s">⚔️</div>
+<div class="floating" style="top:70%;right:5%;animation-delay:9s">🔥</div>
+<div class="floating" style="top:20%;left:85%;animation-delay:2s">❄️</div>
+<div class="floating" style="top:60%;left:88%;animation-delay:5s">🌩️</div>
+<div class="floating" style="top:80%;left:5%;animation-delay:8s">👑</div>
+<div class="floating" style="top:40%;right:90%;animation-delay:11s">💀</div>
 
 <div class="header">
 <h1>BLOX FRUITS SERVER HUB</h1>
 <div class="badges">
 <span class="badge">VER 26</span>
-<span class="badge">3D MODE</span>
+<span class="badge">3D</span>
 <span class="badge">NO LAG</span>
-<span class="badge">GOD TIER</span>
 </div>
 </div>
 
 <div class="stats">
-<span>Players Online: <b id="playerCount">2,341,567</b></span>
-<span>6 Servers</span>
-<span>Region: Global</span>
+<span>Online: <b id="playerCount">2,341,567</b></span>
+<span>6 Server</span>
+<span>Global</span>
 </div>
 
 <div class="container">
 <h2>SERVER LIST</h2>
-
-<div class="server"><div><b>Sea 1 - Server #01</b><div class="info"><span class="players">3/12 Players</span> | Ping 22ms | 🇮🇩 Indonesia</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
-<div class="server"><div><b>Sea 1 - Server #08</b><div class="info"><span class="players">9/12 Players</span> | Ping 28ms | 🇸🇬 Singapore</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
-<div class="server"><div><b>Sea 2 - Server #07</b><div class="info"><span class="players">4/12 Players</span> | Ping 45ms | 🇦🇺 Australia</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
-<div class="server"><div><b>Sea 2 - Server #11</b><div class="info"><span class="players">10/12 Players</span> | Ping 38ms | 🇺🇸 USA</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
-<div class="server"><div><b>Sea 3 - Server #02</b><div class="info"><span class="players">2/12 Players</span> | Ping 24ms | 🇮🇩 Indonesia</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
-<div class="server"><div><b>Sea 3 - Server #20</b><div class="info"><span class="players">11/12 Players</span> | Ping 60ms | 🇺🇸 USA</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
-
+<div class="server"><div><b>Sea 1 - #01</b><div class="info"><span class="players">3/12</span> | 22ms | 🇮🇩 ID</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 1 - #08</b><div class="info"><span class="players">9/12</span> | 28ms | 🇸🇬 SG</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 2 - #07</b><div class="info"><span class="players">4/12</span> | 45ms | 🇦🇺 AU</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 2 - #11</b><div class="info"><span class="players">10/12</span> | 38ms | 🇺🇸 US</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 3 - #02</b><div class="info"><span class="players">2/12</span> | 24ms | 🇮🇩 ID</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
+<div class="server"><div><b>Sea 3 - #20</b><div class="info"><span class="players">11/12</span> | 60ms | 🇺🇸 US</div></div><button class="join-btn" onclick="join()">JOIN</button></div>
 </div>
 
 <div class="footer">
@@ -207,23 +154,20 @@ box-shadow:0 0 30px rgba(255,106,0,0.6);
 </div>
 
 <script>
-// LOADING FIX 3 DETIK + KLIK SKIP
-let loaderGone = false;
-function hideLoader(){
-if(loaderGone) return;
-loaderGone = true;
+function startSite(){
 document.getElementById('loader').style.opacity = '0';
-setTimeout(() => document.getElementById('loader').style.display = 'none', 1000);
+setTimeout(() => {
+document.getElementById('loader').style.display = 'none';
+document.querySelector('.scene').style.display = 'block';
+animate(); // BARU JALANIN ANIMASI PAS DIKLIK
+}, 1000);
 }
-setTimeout(hideLoader, 3000);
-window.addEventListener('load', hideLoader);
-document.getElementById('loader').addEventListener('click', hideLoader);
 
 function join(){
 window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
 }
 
-// PARTICLE + RAIN 30FPS
+// ANIMASI GA JALAN SEBELUM DIKLIK
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 const rainCanvas = document.getElementById('rain');
@@ -234,12 +178,12 @@ canvas.width = rainCanvas.width = window.innerWidth;
 canvas.height = rainCanvas.height = window.innerHeight;
 
 let particles = [];
-for(let i=0; i<18; i++){ // dikurangin biar kuat 3D
-particles.push({x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2 + 1, speedX: Math.random() * 0.3 - 0.15, speedY: Math.random() * 0.3 - 0.15, color: `hsl(${20 + Math.random()*20}, 100%, 50%)`});
+for(let i=0; i<12; i++){
+particles.push({x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2 + 1, speedX: Math.random() * 0.2 - 0.1, speedY: Math.random() * 0.2 - 0.1, color: `hsl(${20 + Math.random()*20}, 100%, 50%)`});
 }
 let raindrops = [];
-for(let i=0; i<80; i++){ // dikurangin juga
-raindrops.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, l: Math.random()*20+10, ys: Math.random()*4+3});
+for(let i=0; i<50; i++){
+raindrops.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, l: Math.random()*15+8, ys: Math.random()*3+2});
 }
 
 function animate(timestamp){
@@ -256,7 +200,7 @@ p.x += p.speedX; p.y += p.speedY;
 if(p.x<0||p.x>canvas.width) p.speedX *= -1;
 if(p.y<0||p.y>canvas.height) p.speedY *= -1;
 });
-rctx.strokeStyle='rgba(255,106,0,0.25)';
+rctx.strokeStyle='rgba(255,106,0,0.2)';
 rctx.lineWidth=1;
 raindrops.forEach(r=>{
 rctx.beginPath();
@@ -270,13 +214,15 @@ lastTime = timestamp;
 }
 animationId = requestAnimationFrame(animate);
 }
-animate();
+}
 
 let count = 2341567;
 setInterval(() => {
-count += Math.floor(Math.random()*5);
+if(document.querySelector('.scene').style.display === 'block'){
+count += Math.floor(Math.random()*3);
 document.getElementById('playerCount').innerText = count.toLocaleString();
-}, 3000);
+}
+}, 4000);
 
 window.addEventListener('resize',()=>{
 canvas.width = rainCanvas.width = window.innerWidth;
