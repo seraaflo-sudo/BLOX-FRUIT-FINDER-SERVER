@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>BLOX FRUITS - Server Hub 3D</title>
+<title>BLOX FRUITS - Server Hub 3D V26</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@700;800;900&display=swap');
 
@@ -13,39 +13,19 @@ background: #050505;
 background-image: 
   radial-gradient(circle at 20% 50%, rgba(255,106,0,0.15) 0%, transparent 50%),
   radial-gradient(circle at 80% 50%, rgba(255,106,0,0.15) 0%, transparent 50%);
-background-size: 100% 100%, 100% 100%;
 color:#fff;
 font-family:'Montserrat',Arial,sans-serif;
-margin:0;
-padding:0;
-overflow-x:hidden;
-perspective: 800px;
+margin:0;padding:0;overflow-x:hidden;perspective: 800px;
 }
 
-/* LOADING DI TENGAH */
-#loader{
-position:fixed;top:0;left:0;width:100%;height:100%;
-background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;
-flex-direction:column;gap:25px;transition:1s;
-}
+/* LOADING CENTER */
+#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:25px;transition:1s;}
 #loader h1{font-family:'Anton';color:#ff6a00;font-size:32px;letter-spacing:2px;text-align:center;margin:0}
 #loader h1::after{content:' 🍊'}
-.loading-bar{
-width:80%;max-width:400px;height:10px;background:#222;border:2px solid #ff6a00;
-overflow:hidden;border-radius:5px;
-}
-.loading-fill{
-height:100%;width:0%;background:linear-gradient(90deg,#ff6a00,#ffaa00);
-animation:load 2s ease-in-out infinite;box-shadow:0 0 15px #ff6a00;
-}
+.loading-bar{width:80%;max-width:400px;height:10px;background:#222;border:2px solid #ff6a00;overflow:hidden;border-radius:5px;}
+.loading-fill{height:100%;width:0%;background:linear-gradient(90deg,#ff6a00,#ffaa00);animation:load 2s ease-in-out infinite;box-shadow:0 0 15px #ff6a00;}
 @keyframes load{0%{width:0%}50%{width:100%}100%{width:0%}}
-
-.start-btn{
-background:linear-gradient(90deg,#ff6a00,#ff8533);color:#000;border:3px solid #cc5200;
-padding:16px 40px;border-radius:8px;font-weight:900;cursor:pointer;font-size:20px;
-font-family:'Anton',sans-serif;letter-spacing:3px;transition:0.15s;
-box-shadow: 0 6px 0 #cc5200;animation:float 1.5s ease-in-out infinite;
-}
+.start-btn{background:linear-gradient(90deg,#ff6a00,#ff8533);color:#000;border:3px solid #cc5200;padding:16px 40px;border-radius:8px;font-weight:900;cursor:pointer;font-size:20px;font-family:'Anton',sans-serif;letter-spacing:3px;transition:0.15s;box-shadow: 0 6px 0 #cc5200;animation:float 1.5s ease-in-out infinite;}
 .start-btn:active{transform: translateY(6px);box-shadow: 0 0 0 #cc5200;}
 .start-btn:hover{background:linear-gradient(90deg,#ff8533,#ffaa00);transform:scale(1.05);}
 
@@ -54,22 +34,13 @@ box-shadow: 0 6px 0 #cc5200;animation:float 1.5s ease-in-out infinite;
 #particles, #rain{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 #particles{opacity:0.4} #rain{opacity:0.15}
 
-/* KARAKTER ROBLOX BARU */
-.roblox-char{
-position:fixed;bottom:5%;right:5%;font-size:120px;z-index:1;animation:charFloat 3s ease-in-out infinite;
-filter:drop-shadow(0 0 30px rgba(255,106,0,0.8));
-}
+/* ROBLOX CHARACTER */
+.roblox-char{position:fixed;bottom:5%;right:5%;font-size:120px;z-index:1;animation:charFloat 3s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(255,106,0,0.8));}
 @keyframes charFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-20px) rotate(5deg)}}
+.char-accessory{position:absolute;font-size:40px;animation:rotateAcc 4s linear infinite;}
+.acc1{top:-20px;left:30px} .acc2{top:10px;right:-15px} .acc3{bottom:-10px;left:10px}
 
-/* ACCESSORIES DI KEPALA KARAKTER */
-.char-accessory{
-position:absolute;font-size:40px;animation:rotateAcc 4s linear infinite;
-}
-.acc1{top:-20px;left:30px} /* TOPENG */
-.acc2{top:10px;right:-15px} /* PEDANG */
-.acc3{bottom:-10px;left:10px} /* BUAH */
-
-.floating{position:fixed;font-size:40px;opacity:0.1;animation:float3D 25s infinite linear;z-index:0;filter:drop-shadow(0 0 15px rgba(255,106,0,0.6));transform-style: preserve-3d;}
+.floating{position:fixed;font-size:40px;opacity:0.1;animation:float3D 25s infinite linear;z-index:0;filter:drop-shadow(0 0 15px rgba(255,106,0,0.6));}
 @keyframes float3D{0%{transform:translateZ(0) rotateY(0)}100%{transform:translateZ(0) rotateY(360deg)}}
 @keyframes rotateAcc{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 @keyframes neon{0%,100%{text-shadow:0 0 10px #ff6a00}50%{text-shadow:0 0 20px #ffaa00}}
@@ -82,37 +53,28 @@ position:absolute;font-size:40px;animation:rotateAcc 4s linear infinite;
 .stats{background:#111;padding:15px;text-align:center;border-bottom:2px solid #ff6a00;position:relative;z-index:2;transform: translateZ(20px);}
 .stats span{margin:0 10px;color:#ffaa00;font-size:12px;font-weight:800;display:inline-block}
 .stats b{color:#00ff88;font-size:14px;text-shadow:0 0 8px #00ff88}
-.container{max-width:100%;margin:30px auto;padding:0 12px;position:relative;z-index:2;transform-style: preserve-3d;}
+.container{max-width:100%;margin:30px auto;padding:0 12px;position:relative;z-index:2;}
 h2{color:#ff6a00;font-size:20px;margin:30px 0 15px 0;padding:8px 0;border-bottom:2px solid #333;text-align:left;transform: translateZ(25px);}
 
-.server{background:linear-gradient(135deg,#161616,#1a1a1a);border:2px solid #2a2a2a;margin:12px 0;padding:14px 16px;border-radius:0;display:flex;justify-content:space-between;align-items:center;transition:0.3s;border-left:6px solid #ff6a00;position:relative;overflow:hidden;transform-style: preserve-3d;box-shadow: 0 5px 15px rgba(0,0,0,0.5);flex-direction:column;align-items:flex-start;gap:10px;}
+.server{background:linear-gradient(135deg,#161616,#1a1a1a);border:2px solid #2a2a2a;margin:12px 0;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;transition:0.3s;border-left:6px solid #ff6a00;box-shadow: 0 5px 15px rgba(0,0,0,0.5);flex-direction:column;align-items:flex-start;gap:10px;}
 .server:hover{background:#1f1f1f;border-color:#ff6a00;transform: translateZ(15px);box-shadow:0 10px 25px rgba(255,106,0,0.4);}
-.server::after{content:'⚡';position:absolute;right:15px;top:15px;font-size:20px;opacity:0.3;}
-.server b{font-size:15px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;transform: translateZ(8px);}
+.server b{font-size:15px;color:#fff;font-weight:900;}
 .server b::before{content:'🌊 '}
-.players{color:#00ff88;font-weight:900;font-size:13px;transform: translateZ(8px);}
-.info{color:#aaa;font-size:11px;margin-top:3px;transform: translateZ(8px);}
-.join-btn{background:linear-gradient(90deg,#ff6a00,#ff8533);color:#000;border:2px solid #cc5200;padding:10px 20px;border-radius:0;font-weight:900;cursor:pointer;font-size:14px;font-family:'Anton',sans-serif;letter-spacing:1px;transition:0.15s;box-shadow: 0 4px 0 #cc5200;position:relative;transform: translateZ(15px);width:100%;}
-.join-btn:active{transform: translateZ(15px) translateY(4px);box-shadow: 0 0 0 #cc5200;}
+.players{color:#00ff88;font-weight:900;font-size:13px;}
+.info{color:#aaa;font-size:11px;margin-top:3px;}
+.join-btn{background:linear-gradient(90deg,#ff6a00,#ff8533);color:#000;border:2px solid #cc5200;padding:10px 20px;font-weight:900;cursor:pointer;font-size:14px;font-family:'Anton',sans-serif;letter-spacing:1px;transition:0.15s;box-shadow: 0 4px 0 #cc5200;width:100%;}
+.join-btn:active{transform: translateY(4px);box-shadow: 0 0 0 #cc5200;}
 .join-btn:hover{background:linear-gradient(90deg,#ff8533,#ffaa00);}
 
-.footer{background:#0a0a0a;margin-top:60px;padding:30px 15px;text-align:center;border-top:4px solid #ff6a00;position:relative;z-index:2;transform: translateZ(30px);}
+.footer{background:#0a0a0a;margin-top:60px;padding:30px 15px;text-align:center;border-top:4px solid #ff6a00;position:relative;z-index:2;}
 .footer-title{color:#ff6a00;font-family:'Anton',sans-serif;font-size:16px;margin-bottom:15px;letter-spacing:2px;}
-.footer a{background:#161616;border:2px solid #ff6a00;color:#ff6a00;padding:12px 20px;border-radius:0;text-decoration:none;margin:8px;display:inline-block;font-weight:900;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:1px;transition:0.25s;transform: translateZ(15px);width:90%;}
-.footer a:hover{background:#ff6a00;color:#000;transform: translateZ(20px);}
+.footer a{background:#161616;border:2px solid #ff6a00;color:#ff6a00;padding:12px 20px;text-decoration:none;margin:8px;display:inline-block;font-weight:900;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:1px;transition:0.25s;width:90%;}
+.footer a:hover{background:#ff6a00;color:#000;}
 .copyright{margin-top:20px;color:#444;font-size:11px}
 
 @media (min-width: 769px) {
-.floating{font-size:50px}
-.header h1{font-size:52px}
-.server{flex-direction:row;align-items:center}
-.join-btn{width:auto}
-.footer a{width:auto}
-.stats span{font-size:16px}
-.stats b{font-size:20px}
-@media (max-width: 768px) {
-.roblox-char{font-size:80px;bottom:3%;right:3%} /* DIKECILIN DI HP */
-}
+.floating{font-size:50px} .header h1{font-size:52px} .server{flex-direction:row;align-items:center} .join-btn{width:auto} .footer a{width:auto} .stats span{font-size:16px} .stats b{font-size:20px}
+@media (max-width: 768px) {.roblox-char{font-size:80px;bottom:3%;right:3%}}
 </style>
 </head>
 <body>
@@ -120,22 +82,20 @@ h2{color:#ff6a00;font-size:20px;margin:30px 0 15px 0;padding:8px 0;border-bottom
 <div id="loader">
 <h1>BLOX FRUITS SERVER HUB</h1>
 <div class="loading-bar"><div class="loading-fill"></div></div>
-<button class="start-btn" onclick="startSite()">START ⚔️</button>
+<button class="start-btn" onclick="startSite()">START ⚔️</button> <!-- UDAH ENGLISH -->
 </div>
 
 <canvas id="particles"></canvas>
 <canvas id="rain"></canvas>
 
 <div class="scene">
-<!-- KARAKTER ROBLOX + ACCESSORIES -->
 <div class="roblox-char">
 🧍
-<span class="char-accessory acc1">😈</span> <!-- TOPENG IBLIS -->
-<span class="char-accessory acc2">⚔️</span> <!-- DARK BLADE -->
-<span class="char-accessory acc3">🍊</span> <!-- KITSUNE FRUIT -->
+<span class="char-accessory acc1">😈</span>
+<span class="char-accessory acc2">⚔️</span>
+<span class="char-accessory acc3">🍊</span>
 </div>
 
-<!-- ACCESSORIES TERBANG 8 -->
 <div class="floating" style="top:10%;left:5%;animation-delay:0s">🍊</div>
 <div class="floating" style="top:30%;right:8%;animation-delay:3s">🍇</div>
 <div class="floating" style="top:50%;left:10%;animation-delay:6s">⚔️</div>
@@ -156,7 +116,7 @@ h2{color:#ff6a00;font-size:20px;margin:30px 0 15px 0;padding:8px 0;border-bottom
 
 <div class="stats">
 <span>Online: <b id="playerCount">2,341,567</b></span>
-<span>6 Server</span>
+<span>6 Servers</span> <!-- UBAH JADI JAMAK -->
 <span>Global</span>
 </div>
 
@@ -188,70 +148,28 @@ document.querySelector('.scene').style.display = 'block';
 animate();
 }, 1000);
 }
-
 function join(){
 window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
 }
-
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-const rainCanvas = document.getElementById('rain');
-const rctx = rainCanvas.getContext('2d');
-let animationId; let lastTime = 0; const FPS = 30;
-
-canvas.width = rainCanvas.width = window.innerWidth;
-canvas.height = rainCanvas.height = window.innerHeight;
-
-let particles = [];
-for(let i=0; i<12; i++){
-particles.push({x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2 + 1, speedX: Math.random() * 0.2 - 0.1, speedY: Math.random() * 0.2 - 0.1, color: `hsl(${20 + Math.random()*20}, 100%, 50%)`});
-}
-let raindrops = [];
-for(let i=0; i<50; i++){
-raindrops.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, l: Math.random()*15+8, ys: Math.random()*3+2});
-}
-
+const canvas = document.getElementById('particles'); const ctx = canvas.getContext('2d');
+const rainCanvas = document.getElementById('rain'); const rctx = rainCanvas.getContext('2d');
+let lastTime = 0; const FPS = 30;
+canvas.width = rainCanvas.width = window.innerWidth; canvas.height = rainCanvas.height = window.innerHeight;
+let particles = []; for(let i=0; i<12; i++){particles.push({x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2 + 1, speedX: Math.random() * 0.2 - 0.1, speedY: Math.random() * 0.2 - 0.1, color: `hsl(${20 + Math.random()*20}, 100%, 50%)`});}
+let raindrops = []; for(let i=0; i<50; i++){raindrops.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, l: Math.random()*15+8, ys: Math.random()*3+2});}
 function animate(timestamp){
 if(!document.hidden){
 if(timestamp - lastTime > 1000/FPS){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-rctx.clearRect(0,0,rainCanvas.width,rainCanvas.height);
-particles.forEach(p=>{
-ctx.fillStyle = p.color;
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-ctx.fill();
-p.x += p.speedX; p.y += p.speedY;
-if(p.x<0||p.x>canvas.width) p.speedX *= -1;
-if(p.y<0||p.y>canvas.height) p.speedY *= -1;
-});
-rctx.strokeStyle='rgba(255,106,0,0.2)';
-rctx.lineWidth=1;
-raindrops.forEach(r=>{
-rctx.beginPath();
-rctx.moveTo(r.x, r.y);
-rctx.lineTo(r.x, r.y+r.l);
-rctx.stroke();
-r.y += r.ys;
-if(r.y>canvas.height) r.y = -20;
-});
+ctx.clearRect(0,0,canvas.width,canvas.height); rctx.clearRect(0,0,rainCanvas.width,rainCanvas.height);
+particles.forEach(p=>{ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill(); p.x += p.speedX; p.y += p.speedY; if(p.x<0||p.x>canvas.width) p.speedX *= -1; if(p.y<0||p.y>canvas.height) p.speedY *= -1;});
+rctx.strokeStyle='rgba(255,106,0,0.2)'; rctx.lineWidth=1; raindrops.forEach(r=>{rctx.beginPath(); rctx.moveTo(r.x, r.y); rctx.lineTo(r.x, r.y+r.l); rctx.stroke(); r.y += r.ys; if(r.y>canvas.height) r.y = -20;});
 lastTime = timestamp;
 }
-animationId = requestAnimationFrame(animate);
+requestAnimationFrame(animate);
 }
 }
-
 let count = 2341567;
-setInterval(() => {
-if(document.querySelector('.scene').style.display === 'block'){
-count += Math.floor(Math.random()*3);
-document.getElementById('playerCount').innerText = count.toLocaleString();
-}
-}, 4000);
-
-window.addEventListener('resize',()=>{
-canvas.width = rainCanvas.width = window.innerWidth;
-canvas.height = rainCanvas.height = window.innerHeight;
-});
+setInterval(() => {if(document.querySelector('.scene').style.display === 'block'){count += Math.floor(Math.random()*3); document.getElementById('playerCount').innerText = count.toLocaleString();}}, 4000);
+window.addEventListener('resize',()=>{canvas.width = rainCanvas.width = window.innerWidth; canvas.height = rainCanvas.height = window.innerHeight;});
 </script>
 </body></html>
