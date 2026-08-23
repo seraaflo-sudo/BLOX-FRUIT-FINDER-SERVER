@@ -8,85 +8,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700;900&display=swap');
 
 *{box-sizing:border-box}
-body{
-background: #0a1a2f;
-color:#fff;
-font-family:'Roboto',Arial,sans-serif;
-margin:0;padding:0;overflow-x:hidden;
-}
+body{background: #0a1a2f;color:#fff;font-family:'Roboto',Arial,sans-serif;margin:0;padding:0;overflow-x:hidden;}
 
-/* LOADING BALIKIN KEREN */
-#loader{
-position:fixed;top:0;left:0;width:100%;height:100vh;background:#000;z-index:9999;
-display:flex;align-items:center;justify-content:center;flex-direction:column;gap:28px;
-transition:0.8s;padding:20px;
-background: radial-gradient(circle, #0a1a2f 0%, #000 100%);
-}
-#loader h1{
-font-family:'Bangers';color:#4db8ff;font-size:clamp(28px, 6vw, 42px);letter-spacing:3px;
-text-align:center;margin:0;text-shadow:0 0 20px #0077ff;
-}
-.loading-bar{
-width:85%;max-width:350px;height:8px;background:#001f3f;border:2px solid #4db8ff;
-overflow:hidden;border-radius:10px;box-shadow:0 0 15px #0077ff;
-}
-.loading-fill{
-height:100%;width:30%;background:linear-gradient(90deg,#4db8ff,#00aaff);
-animation:load 1.8s ease-in-out infinite;border-radius:10px;
-}
+/* LOADING */
+#loader{position:fixed;top:0;left:0;width:100%;height:100vh;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:28px;background: radial-gradient(circle, #0a1a2f 0%, #000 100%);}
+#loader h1{font-family:'Bangers';color:#4db8ff;font-size:clamp(28px, 6vw, 42px);letter-spacing:3px;text-align:center;margin:0;text-shadow:0 0 20px #0077ff;}
+.loading-bar{width:85%;max-width:350px;height:8px;background:#001f3f;border:2px solid #4db8ff;overflow:hidden;border-radius:10px;box-shadow:0 0 15px #0077ff;}
+.loading-fill{height:100%;width:30%;background:linear-gradient(90deg,#4db8ff,#00aaff);animation:load 1.8s ease-in-out infinite;border-radius:10px;}
 @keyframes load{0%{width:30%;margin-left:0}50%{width:70%;margin-left:15%}100%{width:30%;margin-left:70%}}
-.start-btn{
-background:linear-gradient(180deg,#00aaff,#0077ff);color:#fff;border:3px solid #004a99;
-padding:14px 36px;border-radius:8px;font-weight:900;cursor:pointer;font-size:18px;
-font-family:'Bangers';letter-spacing:2px;transition:0.2s;text-transform:uppercase;
-box-shadow:0 4px 0 #004a99, 0 0 20px rgba(0,119,255,0.5);
-}
-.start-btn:active{transform: translateY(4px);box-shadow: 0 0 0 #004a99;}
+.start-btn{background:linear-gradient(180deg,#00aaff,#0077ff);color:#fff;border:3px solid #004a99;padding:14px 36px;border-radius:8px;font-weight:900;cursor:pointer;font-size:18px;font-family:'Bangers';letter-spacing:2px;transition:0.2s;text-transform:uppercase;box-shadow:0 4px 0 #004a99, 0 0 20px rgba(0,119,255,0.5);display:none;}
+.start-btn.show{display:block}
+.start-btn:active{transform: translateY(4px);}
 
 /* SCENE */
 .scene{display:none;}
 .header{background:#001f3f;border-bottom:4px solid #0077ff;padding:25px;text-align:center;}
 .header h1{color:#4db8ff;margin:0;font-size:36px;font-family:'Bangers';letter-spacing:3px;}
-
 .stats{background:#001429;padding:12px;text-align:center;border-bottom:3px solid #0077ff;}
 .stats span{margin:0 15px;color:#b3d9ff;font-weight:700;}
-
 .container{max-width:1100px;margin:30px auto;padding:0 16px;}
 .section-title{color:#4db8ff;font-size:24px;margin:35px 0 15px 0;border-bottom:3px solid #0077ff;font-family:'Bangers';letter-spacing:1px;}
 
-/* SERVER CARD */
-.server{
-background:#0f233c;border:2px solid #004a99;margin:15px 0;padding:15px;
-display:flex;justify-content:space-between;align-items:center;border-radius:8px;
-}
+/* SERVER */
+.server{background:#0f233c;border:2px solid #004a99;margin:15px 0;padding:15px;display:flex;justify-content:space-between;align-items:center;border-radius:8px;}
 .server:hover{border-color:#0077ff;background:#142d4b;}
 .join-btn{background:linear-gradient(180deg,#00aaff,#0077ff);color:#fff;border:2px solid #004a99;padding:10px 22px;font-weight:700;cursor:pointer;border-radius:6px;}
 
-/* SWORD GRID PAKE GAMBAR BENERAN */
-.sword-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;margin-top:20px;}
-.sword-card{
-background:#0f233c;border:2px solid #004a99;border-radius:10px;padding:15px;
-text-align:center;transition:0.2s;
-}
-.sword-card:hover{border-color:#0077ff;transform:translateY(-5px);}
-.sword-card img{
-width:100px;height:100px;object-fit:contain;margin-bottom:10px;
-filter: drop-shadow(0 0 10px rgba(77,184,255,0.5));
-}
-.sword-card p{margin:0;font-weight:700;color:#e6f3ff;}
-.sword-card span{font-size:12px;color:#99ccff;}
+/* FOUNDER */
+.credit{background:#001429;border:2px solid #0077ff;border-radius:10px;padding:25px;margin-top:40px;text-align:center;}
+.credit h3{color:#4db8ff;font-family:'Bangers';letter-spacing:2px;margin:0 0 20px 0;font-size:22px;}
+.founder{display:inline-block;margin:0 20px;text-align:center;vertical-align:top;}
+.founder img{width:80px;height:80px;border-radius:50%;border:3px solid #0077ff;margin-bottom:8px;object-fit:cover;background:#004a99;}
+.founder p{margin:0;font-weight:900;font-size:15px;color:#fff;letter-spacing:1px;}
 
-/* CREDIT PENDIRI */
-.credit{
-background:#001429;border:2px solid #0077ff;border-radius:10px;padding:20px;
-margin-top:40px;text-align:center;
-}
-.credit h3{color:#4db8ff;font-family:'Bangers';letter-spacing:2px;margin:0 0 15px 0;}
-.founder{display:inline-block;margin:0 15px;text-align:center;}
-.founder img{width:70px;height:70px;border-radius:50%;border:3px solid #0077ff;margin-bottom:5px;}
-.founder p{margin:0;font-weight:700;font-size:14px;color:#fff;}
-
-.footer{background:#000f1e;margin-top:30px;padding:25px;text-align:center;border-top:4px solid #0077ff;}
+/* FOOTER */
+.footer{background:#000f1e;margin-top:30px;padding:20px;text-align:center;border-top:4px solid #0077ff;}
+.footer p{color:#4db8ff;font-family:'Bangers';letter-spacing:2px;font-size:16px;margin:0;}
 </style>
 </head>
 <body>
@@ -118,54 +75,24 @@ margin-top:40px;text-align:center;
 <div><b>Second Sea - Server 07</b><br><small style="color:#99ccff">4/12 Players | 45ms | Australia</small></div>
 <button class="join-btn" onclick="join()">JOIN</button>
 </div>
-
-<h2 class="section-title">LEGENDARY SWORDS</h2>
-<div class="sword-grid">
-<div class="sword-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/7/7a/True-Triple-Katana.png/150px-True-Triple-Katana.png">
-<p>True Triple Katana</p>
-<span>Mythical</span>
-</div>
-<div class="sword-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/3/3c/Saber.png/150px-Saber.png">
-<p>Saber</p>
-<span>Rare</span>
-</div>
-<div class="sword-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/6/6e/Rengoku.png/150px-Rengoku.png">
-<p>Rengoku</p>
-<span>Legendary</span>
-</div>
-<div class="sword-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/1/1f/Yama.png/150px-Yama.png">
-<p>Yama</p>
-<span>Mythical</span>
-</div>
-<div class="sword-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/2/2a/Tushita.png/150px-Tushita.png">
-<p>Tushita</p>
-<span>Mythical</span>
-</div>
-<div class="sword-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/5/5b/Shisui.png/150px-Shisui.png">
-<p>Shisui</p>
-<span>Legendary</span>
-</div>
+<div class="server">
+<div><b>Third Sea - Server 20</b><br><small style="color:#99ccff">11/12 Players | 60ms | USA</small></div>
+<button class="join-btn" onclick="join()">JOIN</button>
 </div>
 
-<h2 class="section-title">FOUNDERS</h2> <!-- NAMA PENDIRI -->
+<h2 class="section-title">FOUNDERS</h2>
 <div class="credit">
 <h3>DEVELOPED BY</h3>
 <div class="founder">
-<img src="https://i.imgur.com/8mK3pQz.png">
+<img src="https://ui-avatars.com/api/?name=UZOTH&background=0077ff&color=fff&size=80">
 <p>UZOTH</p>
 </div>
 <div class="founder">
-<img src="https://i.imgur.com/9QwE2rT.png">
+<img src="https://ui-avatars.com/api/?name=RIP+INDRA&background=0077ff&color=fff&size=80">
 <p>RIP INDRA</p>
 </div>
 <div class="founder">
-<img src="https://i.imgur.com/3LcV7nM.png">
+<img src="https://ui-avatars.com/api/?name=GAMER+BOT&background=0077ff&color=fff&size=80">
 <p>GAMER BOT</p>
 </div>
 </div>
@@ -173,7 +100,7 @@ margin-top:40px;text-align:center;
 </div>
 
 <div class="footer">
-<p style="color:#557799;font-size:12px">© 2026 BLOX FRUITS SERVER HUB. FAN MADE.</p>
+<p>est 2023</p>
 </div>
 </div>
 
@@ -188,7 +115,7 @@ document.querySelector('.scene').style.display = 'block';
 function join(){
 window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
 }
-setTimeout(()=>{document.querySelector('.start-btn').style.display='block'},1800)
+setTimeout(()=>{document.querySelector('.start-btn').classList.add('show')},1800)
 
 let count = 2341567;
 setInterval(() => {if(document.querySelector('.scene').style.display === 'block'){count += Math.floor(Math.random()*2); document.getElementById('playerCount').innerText = count.toLocaleString();}}, 5000);
