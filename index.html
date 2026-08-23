@@ -3,62 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLOX FRUITS - Server Hub V2</title>
+<title>BLOX FRUITS - Official Server Hub</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap'); /* FONT KAYAK ROBLOX */
 
 *{box-sizing:border-box}
 body{
-background: #050505 url('https://cdn.discordapp.com/attachments/123/456/blox-bg.jpg') no-repeat center fixed; /* GANTI BG */
+background: #0a1a2f url('https://i.imgur.com/JQwX8kL.jpg') no-repeat center fixed; /* BG LAUT BIRU */
 background-size: cover;
-color:#e0e0e0;
-font-family:'Montserrat',Arial,sans-serif;
+color:#fff;
+font-family:'Roboto',Arial,sans-serif;
 margin:0;padding:0;overflow-x:hidden;
 }
-body::before{
+body::before{ /* OVERLAY BIRU GELAP */
 content:'';position:fixed;top:0;left:0;width:100%;height:100%;
-background:linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9));z-index:0; /* GRADIENT BARU */
+background:rgba(10,26,47,0.85);z-index:0;
 }
 
 /* LOADING */
-#loader{position:fixed;top:0;left:0;width:100%;height:100vh;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:28px;transition:0.8s;padding:20px;}
-#loader h1{font-family:'Anton';color:#ff6a00;font-size:clamp(26px, 5vw, 36px);letter-spacing:1px;text-align:center;margin:0;}
-.loading-bar{width:85%;max-width:340px;height:6px;background:#111;border:1px solid #ff6a00;overflow:hidden;border-radius:20px;}
-.loading-fill{height:100%;width:30%;background:linear-gradient(90deg,#ff6a00,#ffaa00);animation:load 1.8s ease-in-out infinite;border-radius:20px;}
+#loader{
+position:fixed;top:0;left:0;width:100%;height:100vh;background:#0a1a2f;z-index:9999;
+display:flex;align-items:center;justify-content:center;flex-direction:column;gap:25px;
+transition:0.8s;padding:20px;
+}
+#loader h1{
+font-family:'Bangers';color:#4db8ff;font-size:clamp(28px, 6vw, 40px);letter-spacing:2px;
+text-align:center;margin:0;text-shadow:2px 2px 0 #001f3f;
+}
+.loading-bar{
+width:85%;max-width:340px;height:8px;background:#001f3f;border:2px solid #4db8ff;
+overflow:hidden;border-radius:4px;
+}
+.loading-fill{
+height:100%;width:30%;background:linear-gradient(90deg,#4db8ff,#00aaff);
+animation:load 1.8s ease-in-out infinite;
+}
 @keyframes load{0%{width:30%;margin-left:0}50%{width:70%;margin-left:15%}100%{width:30%;margin-left:70%}}
-.start-btn{background:#ff6a00;color:#000;border:none;padding:14px 36px;border-radius:6px;font-weight:700;cursor:pointer;font-size:18px;font-family:'Montserrat',sans-serif;letter-spacing:1px;transition:0.2s;text-transform:uppercase;}
-.start-btn:hover{background:#ff8533;}
+.start-btn{
+background:#0077ff;color:#fff;border:3px solid #004a99;padding:14px 36px;border-radius:4px;
+font-weight:700;cursor:pointer;font-size:18px;font-family:'Bangers',sans-serif;
+letter-spacing:2px;transition:0.2s;text-transform:uppercase;
+}
+.start-btn:active{transform: translateY(3px);}
+.start-btn:hover{background:#0099ff;}
 
 /* SCENE */
 .scene{display:none;position:relative;z-index:1;}
-.header{background:rgba(18,18,18,0.95);border-bottom:3px solid #ff6a00;padding:28px 15px;text-align:center;}
-.header h1{color:#ff6a00;margin:0;font-size:32px;font-weight:800;font-family:'Anton',sans-serif;}
+.header{background:rgba(0,31,63,0.9);border-bottom:4px solid #0077ff;padding:25px 15px;text-align:center;}
+.header h1{color:#4db8ff;margin:0;font-size:34px;font-weight:400;font-family:'Bangers',sans-serif;letter-spacing:3px;text-shadow:2px 2px 0 #001f3f;}
 
-/* CARD BARU ADA GAMBAR BESAR */
-.feature-card{
-background:rgba(20,20,20,0.9);border:2px solid #ff6a00;margin:20px 0;padding:0;
-border-radius:12px;overflow:hidden;display:flex;flex-direction:column;
+.stats{background:rgba(0,20,40,0.9);padding:12px;text-align:center;border-bottom:3px solid #0077ff;}
+.stats span{margin:0 15px;color:#b3d9ff;font-size:14px;font-weight:700;}
+.stats b{color:#00ff88;font-size:16px;}
+
+.container{max-width:1000px;margin:30px auto;padding:0 16px;}
+.section-title{color:#4db8ff;font-size:24px;margin:35px 0 15px 0;padding-bottom:8px;border-bottom:3px solid #0077ff;font-family:'Bangers';letter-spacing:1px;display:flex;align-items:center;gap:10px;}
+
+/* SERVER CARD STYLE ROBLOX */
+.server{
+background:rgba(15,35,60,0.9);border:2px solid #004a99;margin:15px 0;padding:15px;
+display:flex;justify-content:space-between;align-items:center;transition:0.2s;
+border-radius:8px;
 }
-.feature-card img{width:100%;height:200px;object-fit:cover;}
-.feature-content{padding:15px;}
-.feature-content h3{color:#ff6a00;margin:0 0 8px 0;font-size:18px;}
-.feature-content p{color:#aaa;margin:0;font-size:13px;}
+.server:hover{background:rgba(20,45,75,0.9);border-color:#0077ff;}
+.server-info{display:flex;align-items:center;gap:15px;}
+.server-icon{width:55px;height:55px;border-radius:6px;object-fit:cover;border:2px solid #0077ff;}
+.server-text b{font-size:16px;color:#fff;font-weight:700;}
+.info{color:#99ccff;font-size:13px;margin-top:4px;}
+.join-btn{background:linear-gradient(180deg,#00aaff,#0077ff);color:#fff;border:2px solid #004a99;padding:10px 22px;font-weight:700;
+cursor:pointer;font-size:14px;border-radius:6px;font-family:'Roboto';transition:0.15s;}
+.join-btn:active{transform:translateY(2px);}
 
-.container{max-width:1100px;margin:30px auto;padding:0 16px;}
-.section-title{color:#ff6a00;font-size:22px;margin:40px 0 15px 0;padding-bottom:8px;border-bottom:2px solid #333;display:flex;align-items:center;gap:10px;}
-
-/* GRID ITEMS */
-.item-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:20px;}
-.item-card{
-background:rgba(25,25,25,0.9);border:2px solid #333;border-radius:10px;padding:10px;
-text-align:center;transition:0.3s;
+/* SWORD GRID */
+.sword-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;margin-top:20px;}
+.sword-card{
+background:rgba(15,35,60,0.9);border:2px solid #004a99;border-radius:8px;padding:15px;
+text-align:center;transition:0.2s;
 }
-.item-card:hover{border-color:#ff6a00;transform:scale(1.05);}
-.item-card img{width:70px;height:70px;object-fit:contain;margin-bottom:6px;}
-.item-card p{margin:0;font-size:12px;font-weight:600;color:#ddd;}
+.sword-card:hover{border-color:#0077ff;transform:translateY(-4px);background:rgba(20,45,75,0.9);}
+.sword-card img{width:100px;height:100px;object-fit:contain;margin-bottom:10px;filter: drop-shadow(0 0 8px rgba(77,184,255,0.4));}
+.sword-card p{margin:0;font-size:14px;font-weight:700;color:#e6f3ff;}
+.sword-card span{font-size:12px;color:#99ccff;}
 
-.server{background:rgba(20,20,20,0.9);border:1px solid #333;margin:14px 0;padding:16px;display:flex;justify-content:space-between;align-items:center;border-left:5px solid #ff6a00;border-radius:8px;}
-.join-btn{background:#ff6a00;color:#000;border:none;padding:10px 24px;font-weight:700;cursor:pointer;font-size:14px;border-radius:6px;}
+.footer{background:rgba(0,15,30,0.95);margin-top:50px;padding:25px 15px;text-align:center;border-top:4px solid #0077ff;}
+.footer a{background:#004a99;border:2px solid #0077ff;color:#b3d9ff;padding:10px 18px;
+text-decoration:none;margin:6px;display:inline-block;font-weight:700;font-size:13px;transition:0.2s;border-radius:4px;}
+.footer a:hover{background:#0077ff;color:#fff;}
+
+@media (max-width: 768px) {
+.server{flex-direction:column;align-items:flex-start;gap:12px} 
+.join-btn{width:100%}
+}
 </style>
 </head>
 <body>
@@ -66,7 +101,7 @@ text-align:center;transition:0.3s;
 <div id="loader">
 <h1>BLOX FRUITS SERVER HUB</h1>
 <div class="loading-bar"><div class="loading-fill"></div></div>
-<button class="start-btn" onclick="startSite()">START</button>
+<button class="start-btn" onclick="startSite()">START GAME</button>
 </div>
 
 <div class="scene">
@@ -74,67 +109,89 @@ text-align:center;transition:0.3s;
 <h1>BLOX FRUITS SERVER HUB</h1>
 </div>
 
+<div class="stats">
+<span>PLAYERS ONLINE: <b id="playerCount">2,341,567</b></span>
+<span>ACTIVE SERVERS: 6</span>
+</div>
+
 <div class="container">
 
-<h2 class="section-title">FEATURED CONTENT</h2> <!-- SECTION BARU -->
-<div class="feature-card">
-<img src="https://cdn.discordapp.com/attachments/123/456/sea-banner.jpg" onerror="this.src='https://via.placeholder.com/800x200/ff6a00/000?text=BLOX+FRUITS+SEA'">
-<div class="feature-content">
-<h3>Explore The Three Seas</h3>
-<p>Join 6 active servers across Sea 1, Sea 2, and Sea 3. Low ping for Asia region.</p>
+<h2 class="section-title"><img src="https://i.imgur.com/8mK3pQz.png" style="width:30px;height:30px;"> SERVER BROWSER</h2>
+
+<div class="server">
+<div class="server-info">
+<img class="server-icon" src="https://i.imgur.com/5ZxY1aB.png">
+<div class="server-text">
+<b>First Sea - Server 01</b>
+<div class="info">3/12 Players | 22ms | Indonesia</div>
 </div>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
 </div>
 
-<h2 class="section-title">POPULAR FRUITS</h2>
-<div class="item-grid">
-<div class="item-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/5/5f/Flame-Fruit.png/150px-Flame-Fruit.png" onerror="this.src='https://via.placeholder.com/70/ff4500/fff?text=FLAME'">
-<p>Flame</p>
+<div class="server">
+<div class="server-info">
+<img class="server-icon" src="https://i.imgur.com/9QwE2rT.png">
+<div class="server-text">
+<b>Second Sea - Server 07</b>
+<div class="info">4/12 Players | 45ms | Australia</div>
 </div>
-<div class="item-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/8/8a/Ice-Fruit.png/150px-Ice-Fruit.png" onerror="this.src='https://via.placeholder.com/70/00bfff/fff?text=ICE'">
-<p>Ice</p>
 </div>
-<div class="item-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/2/2b/Light-Fruit.png/150px-Light-Fruit.png" onerror="this.src='https://via.placeholder.com/70/ffff00/000?text=LIGHT'">
-<p>Light</p>
-</div>
-<div class="item-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/4/4c/Dark-Fruit.png/150px-Dark-Fruit.png" onerror="this.src='https://via.placeholder.com/70/8b00ff/fff?text=DARK'">
-<p>Dark</p>
-</div>
+<button class="join-btn" onclick="join()">JOIN</button>
 </div>
 
-<h2 class="section-title">LEGENDARY SWORDS</h2> <!-- INI PEDANGNYA BANG -->
-<div class="item-grid">
-<div class="item-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/7/7a/True-Triple-Katana.png/150px-True-Triple-Katana.png" onerror="this.src='https://via.placeholder.com/70/c0c0c0/000?text=TTK'">
+<div class="server">
+<div class="server-info">
+<img class="server-icon" src="https://i.imgur.com/3LcV7nM.png">
+<div class="server-text">
+<b>Third Sea - Server 20</b>
+<div class="info">11/12 Players | 60ms | USA</div>
+</div>
+</div>
+<button class="join-btn" onclick="join()">JOIN</button>
+</div>
+
+<h2 class="section-title"><img src="https://i.imgur.com/wP9zLkQ.png" style="width:30px;height:30px;"> LEGENDARY SWORDS</h2> <!-- CUMA PEDANG -->
+<div class="sword-grid">
+<div class="sword-card">
+<img src="https://i.imgur.com/4nT8kVb.png">
 <p>True Triple Katana</p>
+<span>Mythical Sword</span>
 </div>
-<div class="item-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/3/3c/Saber.png/150px-Saber.png" onerror="this.src='https://via.placeholder.com/70/c0c0c0/000?text=SABER'">
+<div class="sword-card">
+<img src="https://i.imgur.com/7bR2sXc.png">
 <p>Saber</p>
+<span>Rare Sword</span>
 </div>
-<div class="item-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/6/6e/Rengoku.png/150px-Rengoku.png" onerror="this.src='https://via.placeholder.com/70/ff0000/fff?text=RENGOKU'">
+<div class="sword-card">
+<img src="https://i.imgur.com/1mF9dGh.png">
 <p>Rengoku</p>
+<span>Legendary Sword</span>
 </div>
-<div class="item-card">
-<img src="https://static.wikia.nocookie.net/blox-fruit/images/thumb/1/1f/Yama.png/150px-Yama.png" onerror="this.src='https://via.placeholder.com/70/800000/fff?text=YAMA'">
+<div class="sword-card">
+<img src="https://i.imgur.com/6kY3jQp.png">
 <p>Yama</p>
+<span>Mythical Sword</span>
+</div>
+<div class="sword-card">
+<img src="https://i.imgur.com/2pL5wEr.png">
+<p>Tushita</p>
+<span>Mythical Sword</span>
+</div>
+<div class="sword-card">
+<img src="https://i.imgur.com/8zQ4xNm.png">
+<p>Shisui</p>
+<span>Legendary Sword</span>
 </div>
 </div>
 
-<h2 class="section-title">SERVER LIST</h2>
-<div class="server">
-<div><b>Sea 1 - Server #01</b><br><small style="color:#aaa">3/12 Players | 22ms | Indonesia</small></div>
-<button class="join-btn" onclick="join()">JOIN</button>
-</div>
-<div class="server">
-<div><b>Sea 2 - Server #07</b><br><small style="color:#aaa">4/12 Players | 45ms | Australia</small></div>
-<button class="join-btn" onclick="join()">JOIN</button>
 </div>
 
+<div class="footer">
+<a href="trading.html">TRADING</a>
+<a href="boss.html">BOSSES</a>
+<a href="pvp.html">PVP</a>
+<p style="color:#557799;margin-top:15px;font-size:12px">© 2026 BLOX FRUITS SERVER HUB. FAN MADE.</p>
 </div>
 </div>
 
@@ -149,5 +206,7 @@ document.querySelector('.scene').style.display = 'block';
 function join(){
 window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
 }
+let count = 2341567;
+setInterval(() => {if(document.querySelector('.scene').style.display === 'block'){count += Math.floor(Math.random()*2); document.getElementById('playerCount').innerText = count.toLocaleString();}}, 5000);
 </script>
 </body></html>
