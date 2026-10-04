@@ -3,112 +3,660 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLOX FRUITS - Server Hub</title>
+<title>BLOX FRUITS — Giveaway</title>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;500;700;900&display=swap');
 
-*{box-sizing:border-box}
-body{background: #0a1a2f;color:#fff;font-family:'Roboto',Arial,sans-serif;margin:0;padding:0;overflow-x:hidden;}
+*{box-sizing:border-box;margin:0;padding:0}
 
-#loader{position:fixed;top:0;left:0;width:100%;height:100vh;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:28px;background: radial-gradient(circle, #0a1a2f 0%, #000 100%);}
-#loader h1{font-family:'Bangers';color:#4db8ff;font-size:clamp(28px, 6vw, 42px);letter-spacing:3px;text-align:center;margin:0;text-shadow:0 0 20px #0077ff;}
-.loading-bar{width:85%;max-width:350px;height:8px;background:#001f3f;border:2px solid #4db8ff;overflow:hidden;border-radius:10px;box-shadow:0 0 15px #0077ff;}
-.loading-fill{height:100%;width:30%;background:linear-gradient(90deg,#4db8ff,#00aaff);animation:load 1.8s ease-in-out infinite;border-radius:10px;}
-@keyframes load{0%{width:30%;margin-left:0}50%{width:70%;margin-left:15%}100%{width:30%;margin-left:70%}}
-.start-btn{background:linear-gradient(180deg,#00aaff,#0077ff);color:#fff;border:3px solid #004a99;padding:14px 36px;border-radius:8px;font-weight:900;cursor:pointer;font-size:18px;font-family:'Bangers';letter-spacing:2px;display:none;box-shadow:0 4px 0 #004a99;}
-.start-btn.show{display:block}
-.start-btn:active{transform: translateY(4px);}
+body{
+    background:radial-gradient(circle at 50% 0%,#123b63 0%,#071827 45%,#02070d 100%);
+    color:#fff;
+    font-family:Roboto,Arial,sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+}
 
-.scene{display:none;}
-.header{background:#001f3f;border-bottom:4px solid #0077ff;padding:25px;text-align:center;}
-.header h1{color:#4db8ff;margin:0;font-size:36px;font-family:'Bangers';letter-spacing:3px;}
-.stats{background:#001429;padding:12px;text-align:center;border-bottom:3px solid #0077ff;}
-.stats span{margin:0 15px;color:#b3d9ff;font-weight:700;}
-.container{max-width:1100px;margin:30px auto;padding:0 16px;}
-.section-title{color:#4db8ff;font-size:24px;margin:35px 0 15px 0;border-bottom:3px solid #0077ff;font-family:'Bangers';letter-spacing:1px;}
+#loader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:25px;
+    background:radial-gradient(circle at center,#0d3557 0%,#02070d 65%,#000 100%);
+    transition:.7s ease;
+}
 
-/* SERVER */
-.server{background:#0f233c;border:2px solid #004a99;margin:12px 0;padding:15px;display:flex;justify-content:space-between;align-items:center;border-radius:8px;}
-.server:hover{border-color:#0077ff;background:#142d4b;}
-.join-btn{background:linear-gradient(180deg,#00aaff,#0077ff);color:#fff;border:2px solid #004a99;padding:10px 22px;font-weight:700;cursor:pointer;border-radius:6px;}
+.loader-title{
+    font-family:Bangers;
+    font-size:clamp(30px,8vw,55px);
+    letter-spacing:3px;
+    color:#56c8ff;
+    text-align:center;
+    text-shadow:0 0 10px #008cff,0 0 30px #006cff;
+}
 
-/* FOUNDER */
-.credit{background:#001429;border:2px solid #0077ff;border-radius:10px;padding:25px;margin-top:40px;text-align:center;}
-.credit h3{color:#4db8ff;font-family:'Bangers';letter-spacing:2px;margin:0 0 20px 0;font-size:22px;}
-.founder{display:inline-block;margin:0 20px;text-align:center;vertical-align:top;}
-.avatar{width:80px;height:80px;border-radius:50%;border:3px solid #0077ff;margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;}
-.founder p{margin:0;font-weight:900;font-size:15px;color:#fff;letter-spacing:1px;}
+.loading-box{
+    width:min(360px,82vw);
+    height:10px;
+    border:2px solid #158cff;
+    border-radius:20px;
+    background:#031425;
+    overflow:hidden;
+}
 
-.footer{background:#000f1e;margin-top:30px;padding:20px;text-align:center;border-top:4px solid #0077ff;}
-.footer p{color:#4db8ff;font-family:'Bangers';letter-spacing:2px;font-size:16px;margin:0;}
+.loading-fill{
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,#008cff,#5bd7ff);
+    animation:loading 2s forwards;
+}
+
+@keyframes loading{
+    from{width:0}
+    to{width:100%}
+}
+
+.start-btn{
+    display:none;
+    border:0;
+    background:linear-gradient(180deg,#39c7ff,#087cf0);
+    color:white;
+    padding:14px 32px;
+    border-radius:8px;
+    font-family:Bangers;
+    font-size:20px;
+    letter-spacing:2px;
+    cursor:pointer;
+    box-shadow:0 5px 0 #034f9e,0 0 25px #008cff55;
+}
+
+.start-btn:active{
+    transform:translateY(4px);
+}
+
+.scene{
+    display:none;
+    animation:appear .7s ease;
+}
+
+@keyframes appear{
+    from{opacity:0;transform:translateY(15px)}
+    to{opacity:1;transform:none}
+}
+
+.header{
+    border-bottom:1px solid #168cff55;
+    background:#031321dd;
+    backdrop-filter:blur(12px);
+    padding:18px 20px;
+    position:sticky;
+    top:0;
+    z-index:50;
+}
+
+.header-inner{
+    max-width:1050px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-family:Bangers;
+    color:#54caff;
+    font-size:28px;
+    letter-spacing:2px;
+}
+
+.live{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#9bdcff;
+    font-size:13px;
+    font-weight:700;
+}
+
+.dot{
+    width:9px;
+    height:9px;
+    background:#35ff91;
+    border-radius:50%;
+    box-shadow:0 0 12px #35ff91;
+}
+
+.container{
+    max-width:1050px;
+    margin:auto;
+    padding:35px 18px 60px;
+}
+
+.hero{
+    text-align:center;
+    padding:35px 15px 30px;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 14px;
+    border:1px solid #1c9cff;
+    border-radius:30px;
+    color:#67d0ff;
+    background:#078cff12;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-family:Bangers;
+    font-size:clamp(48px,11vw,90px);
+    line-height:.9;
+    letter-spacing:3px;
+    text-shadow:0 4px 0 #006dcc,0 0 30px #008cff66;
+}
+
+.hero h1 span{
+    color:#48c8ff;
+}
+
+.hero p{
+    max-width:650px;
+    margin:22px auto 0;
+    color:#a8c7dc;
+    line-height:1.6;
+    font-size:15px;
+}
+
+.giveaway{
+    margin:25px auto;
+    max-width:850px;
+    background:linear-gradient(145deg,#0c2942,#061523);
+    border:1px solid #168cff66;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 20px 70px #00000066;
+}
+
+.giveaway-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.giveaway-label{
+    color:#65cfff;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.giveaway-title{
+    font-family:Bangers;
+    font-size:34px;
+    letter-spacing:2px;
+    margin-top:5px;
+}
+
+.verified{
+    padding:7px 12px;
+    border-radius:20px;
+    background:#16a86a1c;
+    border:1px solid #25d98b;
+    color:#62ffb0;
+    font-size:11px;
+    font-weight:900;
+}
+
+.rewards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.reward{
+    background:#020b14aa;
+    border:1px solid #1268a444;
+    border-radius:13px;
+    padding:22px 15px;
+    text-align:center;
+}
+
+.reward-icon{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.reward h3{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.reward p{
+    color:#79a8c7;
+    font-size:12px;
+}
+
+.countdown-title{
+    text-align:center;
+    color:#78a8c6;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin:27px 0 10px;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:9px;
+}
+
+.time{
+    min-width:75px;
+    padding:12px 8px;
+    border-radius:10px;
+    background:#020a12;
+    border:1px solid #146aa2;
+    text-align:center;
+}
+
+.time strong{
+    display:block;
+    font-family:Bangers;
+    color:#56cbff;
+    font-size:28px;
+}
+
+.time small{
+    color:#668ba4;
+    font-size:9px;
+    font-weight:900;
+}
+
+.claim{
+    width:100%;
+    margin-top:25px;
+    padding:17px;
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+    color:white;
+    font-family:Bangers;
+    font-size:25px;
+    letter-spacing:2px;
+    background:linear-gradient(90deg,#087cf0,#20baff);
+    box-shadow:0 6px 0 #034e9a,0 0 30px #008cff33;
+}
+
+.claim:hover{
+    filter:brightness(1.12);
+    transform:translateY(-2px);
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:25px;
+}
+
+.info{
+    background:#071827;
+    border:1px solid #123c5d;
+    border-radius:12px;
+    padding:20px;
+}
+
+.info b{
+    display:block;
+    color:#56caff;
+    margin-bottom:8px;
+}
+
+.info span{
+    color:#88a8bd;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.footer{
+    border-top:1px solid #123c5d;
+    background:#02080e;
+    text-align:center;
+    padding:25px 15px;
+    color:#537188;
+    font-size:11px;
+    line-height:1.7;
+}
+
+.footer strong{
+    color:#62bfe9;
+}
+
+@media(max-width:700px){
+
+    .header-inner{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .giveaway{
+        padding:18px;
+    }
+
+    .rewards,
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .countdown{
+        gap:5px;
+    }
+
+    .time{
+        min-width:60px;
+    }
+
+    .time strong{
+        font-size:23px;
+    }
+
+    .verified{
+        display:none;
+    }
+}
 </style>
 </head>
+
 <body>
 
 <div id="loader">
-<h1>BLOX FRUITS SERVER HUB</h1>
-<div class="loading-bar"><div class="loading-fill"></div></div>
-<button class="start-btn" onclick="startSite()">START GAME</button>
+
+    <div class="loader-title">
+        BLOX FRUITS
+    </div>
+
+    <div class="loading-box">
+        <div class="loading-fill"></div>
+    </div>
+
+    <div style="color:#7198b0;font-size:12px;">
+        Preparing giveaway...
+    </div>
+
+    <button class="start-btn" id="startButton" onclick="startSite()">
+        ENTER GIVEAWAY
+    </button>
+
 </div>
+
 
 <div class="scene">
-<div class="header">
-<h1>BLOX FRUITS SERVER HUB</h1>
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <div class="logo">
+            BLOX FRUITS
+        </div>
+
+        <div class="live">
+            <span class="dot"></span>
+            GIVEAWAY LIVE
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+<section class="hero">
+
+    <div class="badge">
+        COMMUNITY GIVEAWAY EVENT
+    </div>
+
+    <h1>
+        BLOX <span>FRUITS</span><br>
+        GIVEAWAY
+    </h1>
+
+    <p>
+        Enter the community giveaway event and get a chance
+        to win exclusive in-game rewards. No purchase required.
+    </p>
+
+</section>
+
+
+<section class="giveaway">
+
+    <div class="giveaway-top">
+
+        <div>
+
+            <div class="giveaway-label">
+                CURRENT EVENT
+            </div>
+
+            <div class="giveaway-title">
+                GRAND FRUIT DROP
+            </div>
+
+        </div>
+
+        <div class="verified">
+            COMMUNITY EVENT
+        </div>
+
+    </div>
+
+
+    <div class="rewards">
+
+        <div class="reward">
+            <div class="reward-icon">🍎</div>
+            <h3>Legendary Fruits</h3>
+            <p>Chance to receive selected rare fruits.</p>
+        </div>
+
+        <div class="reward">
+            <div class="reward-icon">💰</div>
+            <h3>Game Currency</h3>
+            <p>Bonus rewards for selected winners.</p>
+        </div>
+
+        <div class="reward">
+            <div class="reward-icon">🎁</div>
+            <h3>Bonus Rewards</h3>
+            <p>Additional prizes during the event.</p>
+        </div>
+
+    </div>
+
+
+    <div class="countdown-title">
+        EVENT ENDS IN
+    </div>
+
+    <div class="countdown">
+
+        <div class="time">
+            <strong id="days">02</strong>
+            <small>DAYS</small>
+        </div>
+
+        <div class="time">
+            <strong id="hours">14</strong>
+            <small>HOURS</small>
+        </div>
+
+        <div class="time">
+            <strong id="minutes">32</strong>
+            <small>MINUTES</small>
+        </div>
+
+        <div class="time">
+            <strong id="seconds">00</strong>
+            <small>SECONDS</small>
+        </div>
+
+    </div>
+
+
+    <button class="claim" onclick="claimReward()">
+        🎁 CLAIM GIVEAWAY ENTRY
+    </button>
+
+</section>
+
+
+<section class="info-grid">
+
+    <div class="info">
+        <b>✓ Free Entry</b>
+        <span>
+            No payment or purchase is required to participate
+            in this community event.
+        </span>
+    </div>
+
+    <div class="info">
+        <b>✓ Winner Selection</b>
+        <span>
+            Winners are selected after the giveaway event closes.
+        </span>
+    </div>
+
+    <div class="info">
+        <b>✓ Community Event</b>
+        <span>
+            This is a fan-made community giveaway and is not
+            affiliated with Roblox Corporation or Gamer Robot.
+        </span>
+    </div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+    <strong>BLOX FRUITS COMMUNITY GIVEAWAY</strong>
+    <br>
+
+    Fan-made community event. Not affiliated with Roblox,
+    Gamer Robot Inc., or official Blox Fruits websites.
+
+    <br>
+
+    © 2026 Community Giveaway
+
+</footer>
+
 </div>
 
-<div class="stats">
-<span>PLAYERS ONLINE: <b id="playerCount">2,341,567</b></span>
-<span>ACTIVE SERVERS: 6</span>
-</div>
-
-<div class="container">
-
-<h2 class="section-title">SERVER BROWSER</h2>
-<div class="server"><div><b>First Sea - Server 01</b><br><small style="color:#99ccff">3/12 Players | 22ms | Indonesia</small></div><button class="join-btn" onclick="join()">JOIN</button></div>
-<div class="server"><div><b>First Sea - Server 02</b><br><small style="color:#99ccff">7/12 Players | 18ms | Singapore</small></div><button class="join-btn" onclick="join()">JOIN</button></div>
-<div class="server"><div><b>Second Sea - Server 07</b><br><small style="color:#99ccff">4/12 Players | 45ms | Australia</small></div><button class="join-btn" onclick="join()">JOIN</button></div>
-<div class="server"><div><b>Second Sea - Server 15</b><br><small style="color:#99ccff">9/12 Players | 50ms | Japan</small></div><button class="join-btn" onclick="join()">JOIN</button></div>
-<div class="server"><div><b>Third Sea - Server 20</b><br><small style="color:#99ccff">11/12 Players | 60ms | USA</small></div><button class="join-btn" onclick="join()">JOIN</button></div>
-<div class="server"><div><b>Third Sea - Server 25</b><br><small style="color:#99ccff">2/12 Players | 75ms | Europe</small></div><button class="join-btn" onclick="join()">JOIN</button></div>
-
-<h2 class="section-title">FOUNDERS</h2>
-<div class="credit">
-<h3>DEVELOPED BY</h3>
-<div class="founder">
-<div class="avatar" style="background:#0066cc;">UZOTH</div>
-<p>UZOTH</p>
-</div>
-<div class="founder">
-<div class="avatar" style="background:#cc0000;">RIP INDRA</div>
-<p>RIP INDRA</p>
-</div>
-<div class="founder">
-<div class="avatar" style="background:#00aa44;">GAMER BOT</div>
-<p>GAMER BOT</p>
-</div>
-</div>
-
-</div>
-
-<div class="footer">
-<p>est 2023</p>
-</div>
-</div>
 
 <script>
-function startSite(){
-document.getElementById('loader').style.opacity = '0';
-setTimeout(() => {
-document.getElementById('loader').style.display = 'none';
-document.querySelector('.scene').style.display = 'block';
-}, 800);
-}
-function join(){
-window.location.href="https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
-}
-setTimeout(()=>{document.querySelector('.start-btn').classList.add('show')},1800)
 
-let count = 2341567;
-setInterval(() => {if(document.querySelector('.scene').style.display === 'block'){count += Math.floor(Math.random()*2); document.getElementById('playerCount').innerText = count.toLocaleString();}}, 5000);
+/* LOADER */
+
+setTimeout(function(){
+
+    document.getElementById("startButton").style.display = "block";
+
+},2200);
+
+
+function startSite(){
+
+    const loader = document.getElementById("loader");
+
+    loader.style.opacity = "0";
+
+    setTimeout(function(){
+
+        loader.style.display = "none";
+        document.querySelector(".scene").style.display = "block";
+
+    },700);
+
+}
+
+
+/* COUNTDOWN */
+
+let endTime = Date.now() +
+    (2 * 24 * 60 * 60 * 1000) +
+    (14 * 60 * 60 * 1000) +
+    (32 * 60 * 1000);
+
+
+function updateCountdown(){
+
+    let remaining = endTime - Date.now();
+
+    if(remaining < 0){
+        remaining = 0;
+    }
+
+    const days = Math.floor(
+        remaining / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (remaining / (1000 * 60 * 60)) % 24
+    );
+
+    const minutes = Math.floor(
+        (remaining / (1000 * 60)) % 60
+    );
+
+    const seconds = Math.floor(
+        (remaining / 1000) % 60
+    );
+
+    document.getElementById("days").textContent =
+        String(days).padStart(2,"0");
+
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2,"0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2,"0");
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+
+/* CLAIM */
+
+function claimReward(){
+
+    window.location.href =
+    "https://roblox.com.bz/games/2753915549/Blox-Fruits?privateServerLinkCode=95802737358448062085151727225283";
+
+}
+
 </script>
-</body></html>
+
+</body>
+</html>
